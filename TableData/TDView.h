@@ -1,5 +1,5 @@
 //
-//  TDAppDelegate.h
+//  TDView.h
 //  TableData
 //
 //  Created by Vitaliy Voronok on 3/5/14.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (nonatomic, retain) UIWindow *window;
+@interface TDView : UIView
+@property (nonatomic, retain) IBOutlet UITableView *table;
 
 @end

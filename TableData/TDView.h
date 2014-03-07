@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDView : UIView
-@property (nonatomic, retain) IBOutlet UITableView *table;
+@interface TDView : UIView 
+@property (nonatomic, retain)   IBOutlet UITableView        *table;
+@property (nonatomic, retain)	IBOutlet UIBarButtonItem	*editButton;
+@property (nonatomic, retain)	IBOutlet UIBarButtonItem	*addButton;
+
+@property (nonatomic, assign, getter = isEditing)	BOOL	editing;
 
 @end

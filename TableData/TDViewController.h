@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDViewController : UIViewController
+@class TDModels;
+
+@interface TDViewController : UIViewController <UITableViewDataSource>
+@property (nonatomic, readonly) TDModels *models;
+
+- (IBAction)onEdit:(id)sender;
+- (IBAction)onAdd:(id)sender;
 
 @end

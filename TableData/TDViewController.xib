@@ -14,27 +14,50 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VA6-2e-jQa">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="TDTableView" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VA6-2e-jQa">
+                    <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="B8V-Xa-nC6"/>
+                        <outlet property="delegate" destination="-1" id="L7f-jO-ubw"/>
+                    </connections>
                 </tableView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ioD-fb-Cd7">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioD-fb-Cd7">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Add" id="XT8-OI-LuX"/>
+                        <barButtonItem title="Add" id="XT8-OI-LuX">
+                            <connections>
+                                <action selector="onAdd:" destination="-1" id="NUh-SE-EVl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="GBc-Bh-Vk4"/>
                         <barButtonItem title="Sort" id="5RA-Rq-use"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="5bn-uJ-dcu"/>
-                        <barButtonItem title="Delete" id="xjf-80-9Wc"/>
+                        <barButtonItem title="Edit" id="xjf-80-9Wc">
+                            <connections>
+                                <action selector="onEdit:" destination="-1" id="a5h-I8-NUr"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ioD-fb-Cd7" firstAttribute="top" secondItem="VA6-2e-jQa" secondAttribute="bottom" id="Ghv-YU-ey5"/>
+                <constraint firstItem="ioD-fb-Cd7" firstAttribute="trailing" secondItem="VA6-2e-jQa" secondAttribute="trailing" id="JwL-Ot-aWr"/>
+                <constraint firstAttribute="bottom" secondItem="ioD-fb-Cd7" secondAttribute="bottom" id="PL6-AV-xxU"/>
+                <constraint firstItem="VA6-2e-jQa" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="QMK-6R-0aq"/>
+                <constraint firstItem="ioD-fb-Cd7" firstAttribute="leading" secondItem="VA6-2e-jQa" secondAttribute="leading" id="Qeb-nB-50w"/>
+                <constraint firstAttribute="trailing" secondItem="VA6-2e-jQa" secondAttribute="trailing" id="eT1-BC-Pal"/>
+                <constraint firstItem="VA6-2e-jQa" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="uTH-Io-56E"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
+                <outlet property="addButton" destination="XT8-OI-LuX" id="dX1-S1-7EV"/>
+                <outlet property="editButton" destination="xjf-80-9Wc" id="cKU-A7-puZ"/>
                 <outlet property="table" destination="VA6-2e-jQa" id="a7t-fV-mZV"/>
             </connections>
         </view>

@@ -13,12 +13,30 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+- (void)dealloc {
+    self.table = nil;
+    self.editButton = nil;
+    self.addButton = nil;
+    
+    [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    
+    [self setTableViewEditing:editing];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)setTableViewEditing:(BOOL)editing {
+    self.editButton.title = editing ? @"Done" : @"Edit";
+    [self.table setEditing:editing animated:YES];
+}
+
 
 @end

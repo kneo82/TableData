@@ -176,7 +176,7 @@
 				552B857818CE643200D754C3 /* TDModelImages.h */,
 				552B857918CE643200D754C3 /* TDModelImages.m */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		55424DC218CDBBE8009883C9 /* Controller */ = {
@@ -191,7 +191,7 @@
 				5507E6CF18C9A005003B84C4 /* TDTableCell.m */,
 				5507E6D118C9A02B003B84C4 /* TDTableCell.xib */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		558D9A0D18C713EC006F5CC1 = {

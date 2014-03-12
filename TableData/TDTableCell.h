@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TDModelObserver.h"
+
 @class TDModel;
 
-@interface TDTableCell : UITableViewCell
+@interface TDTableCell : UITableViewCell <TDModelObserver>
+@property (nonatomic, retain)   IBOutlet UIActivityIndicatorView *activityIndicator;
+
+@property (nonatomic, retain)   TDModel     *model;
 
 - (void)fillWithModel:(TDModel *)model;
 

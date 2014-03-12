@@ -9,15 +9,17 @@
 #import "TDModels.h"
 #import "TDModel.h"
 
+#import "TDObservableObject.h"
+
+#import "NSObject+TDExtensions.h"
+
 static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
 
 static const NSUInteger kTDStringCount  = 10;
 
 @interface TDModels ()
-@property (nonatomic, retain, readwrite)    NSMutableArray  *mutableModels;
-@property (nonatomic, readonly)             NSString        *path;
-
-@property (nonatomic, assign, getter = isLoaded)    BOOL  loaded;
+@property (nonatomic, retain, readwrite)    NSMutableArray    *mutableModels;
+@property (nonatomic, readonly)             NSString          *path;
 
 - (void)generateModels;
 
@@ -50,7 +52,9 @@ static const NSUInteger kTDStringCount  = 10;
 #pragma mark Accessors
 
 - (NSArray *)models {
-    return [self.mutableModels copy] ;
+    @synchronized(self.mutableModels) {
+        return [[self.mutableModels copy] autorelease];
+    }
 }
 
 - (NSString *)path {
@@ -64,48 +68,62 @@ static const NSUInteger kTDStringCount  = 10;
 #pragma mark Public
 
 - (void)addModel:(TDModel *)model {
-    [self.mutableModels addObject:model];
+    @synchronized(self.mutableModels) {
+        [self.mutableModels addObject:model];
+    }
 }
 
 - (void)removeModel:(TDModel *)model {
-    [self.mutableModels removeObject:model];
+    @synchronized(self.mutableModels) {
+        [self.mutableModels removeObject:model];
+        [model clearingModel];
+    }
 }
 
 - (void)moveModelFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
-    NSMutableArray *models = self.mutableModels;
-    
-    TDModel *model = [models objectAtIndex:fromIndex];
-    [models removeObjectAtIndex:fromIndex];
-    [models insertObject:model atIndex:toIndex];
-}
-
-- (void)load {
-    NSArray *modelsFromFile = [NSArray arrayWithContentsOfFile:self.path];
-	if (modelsFromFile) {
-		[self.mutableModels addObjectsFromArray:modelsFromFile];
-	} else {
-        [self generateModels];
+    @synchronized(self.mutableModels) {
+        NSMutableArray *models = self.mutableModels;
+        
+        TDModel *model = [models objectAtIndex:fromIndex];
+        [models removeObjectAtIndex:fromIndex];
+        [models insertObject:model atIndex:toIndex];
     }
-    
-    self.loaded = YES;
 }
 
 - (void)save {
-    [self.mutableModels writeToFile:self.path atomically:YES];
+    [NSKeyedArchiver archiveRootObject:self.mutableModels toFile:self.path];
 }
 
 - (void)dump {
     [self save];
     
     self.mutableModels = [NSMutableArray array];
+    
+    [super dump];
 }
 
 #pragma mark -
 #pragma mark Private
 
+- (void)performLoading {
+    [super performLoading];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        sleep(2);
+        NSArray *modelsFromFile = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
+        if (modelsFromFile) {
+            [self.mutableModels addObjectsFromArray:modelsFromFile];
+        } else {
+            [self generateModels];
+        }
+        
+        [self finishLoading];
+    });
+}
+
 - (void)generateModels {
     for (NSUInteger i = 0; i < kTDStringCount; ++i) {
-		[self addModel:[TDModel model]];
+		[self addModel:[TDModel object]];
 	}
 }
 

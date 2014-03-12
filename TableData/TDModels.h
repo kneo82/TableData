@@ -8,19 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TDObervableModel.h"
+
 @class TDModel;
 
-@interface TDModels : NSObject
-@property (nonatomic, readonly) NSArray *models;
-
-@property (nonatomic, readonly, getter = isLoaded)    BOOL  loaded;
+@interface TDModels : TDObervableModel
+@property (nonatomic, readonly) NSArray     *models;
 
 - (void)addModel:(TDModel *)model;
 - (void)removeModel:(TDModel *)model;
 - (void)moveModelFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 
 - (void)save;
-- (void)load;
-- (void)dump;
 
 @end

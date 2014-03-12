@@ -17,6 +17,10 @@
 		5507E6D618C9A362003B84C4 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5507E6D418C9A362003B84C4 /* smile@2x.png */; };
 		5507E6DA18C9A584003B84C4 /* TDModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6D918C9A584003B84C4 /* TDModels.m */; };
 		5507E6DD18C9A5B3003B84C4 /* TDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6DC18C9A5B3003B84C4 /* TDModel.m */; };
+		552B857418CE47C600D754C3 /* TDModelImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857318CE47C600D754C3 /* TDModelImage.m */; };
+		552B857718CE56B500D754C3 /* UIImageView+TDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857618CE56B500D754C3 /* UIImageView+TDExtensions.m */; };
+		552B857A18CE643200D754C3 /* TDModelImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857918CE643200D754C3 /* TDModelImages.m */; };
+		55424DC118CDB7FB009883C9 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 55424DC018CDB7FB009883C9 /* blank.png */; };
 		5566E5A418C86248000E4EF0 /* TDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDViewController.xib */; };
 		558D9A1A18C713EC006F5CC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1918C713EC006F5CC1 /* Foundation.framework */; };
 		558D9A1C18C713EC006F5CC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1B18C713EC006F5CC1 /* CoreGraphics.framework */; };
@@ -31,7 +35,10 @@
 		558D9A3D18C713EC006F5CC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 558D9A3B18C713EC006F5CC1 /* InfoPlist.strings */; };
 		558D9A3F18C713EC006F5CC1 /* TableDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A3E18C713EC006F5CC1 /* TableDataTests.m */; };
 		558D9A4B18C71467006F5CC1 /* TDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A4918C71467006F5CC1 /* TDViewController.m */; };
+		55AE825C18CCC8C600A44280 /* TDObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AE825B18CCC8C600A44280 /* TDObservableObject.m */; };
 		55E1B48F18C73A7C00AF1C57 /* TDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1B48E18C73A7C00AF1C57 /* TDView.m */; };
+		D7B45C9318CDCB3400191E62 /* TDObervableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B45C9218CDCB3400191E62 /* TDObervableModel.m */; };
+		D7B45C9618CDDCAC00191E62 /* TDWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B45C9518CDDCAC00191E62 /* TDWeakReference.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +69,13 @@
 		5507E6D918C9A584003B84C4 /* TDModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDModels.m; sourceTree = "<group>"; };
 		5507E6DB18C9A5B3003B84C4 /* TDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDModel.h; sourceTree = "<group>"; };
 		5507E6DC18C9A5B3003B84C4 /* TDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDModel.m; sourceTree = "<group>"; };
+		552B857218CE47C600D754C3 /* TDModelImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDModelImage.h; sourceTree = "<group>"; };
+		552B857318CE47C600D754C3 /* TDModelImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDModelImage.m; sourceTree = "<group>"; };
+		552B857518CE56B500D754C3 /* UIImageView+TDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TDExtensions.h"; sourceTree = "<group>"; };
+		552B857618CE56B500D754C3 /* UIImageView+TDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TDExtensions.m"; sourceTree = "<group>"; };
+		552B857818CE643200D754C3 /* TDModelImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDModelImages.h; sourceTree = "<group>"; };
+		552B857918CE643200D754C3 /* TDModelImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDModelImages.m; sourceTree = "<group>"; };
+		55424DC018CDB7FB009883C9 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank.png; path = Images/blank.png; sourceTree = "<group>"; };
 		5566E5A318C86248000E4EF0 /* TDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDViewController.xib; sourceTree = "<group>"; };
 		558D9A1618C713EC006F5CC1 /* TableData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558D9A1918C713EC006F5CC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,8 +95,15 @@
 		558D9A3E18C713EC006F5CC1 /* TableDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDataTests.m; sourceTree = "<group>"; };
 		558D9A4818C71467006F5CC1 /* TDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDViewController.h; sourceTree = "<group>"; };
 		558D9A4918C71467006F5CC1 /* TDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDViewController.m; sourceTree = "<group>"; };
+		55AE825A18CCC8C600A44280 /* TDObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDObservableObject.h; sourceTree = "<group>"; };
+		55AE825B18CCC8C600A44280 /* TDObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDObservableObject.m; sourceTree = "<group>"; };
+		55AE825D18CCCE5600A44280 /* TDModelObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDModelObserver.h; sourceTree = "<group>"; };
 		55E1B48D18C73A7C00AF1C57 /* TDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDView.h; sourceTree = "<group>"; };
 		55E1B48E18C73A7C00AF1C57 /* TDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDView.m; sourceTree = "<group>"; };
+		D7B45C9118CDCB3400191E62 /* TDObervableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDObervableModel.h; sourceTree = "<group>"; };
+		D7B45C9218CDCB3400191E62 /* TDObervableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDObervableModel.m; sourceTree = "<group>"; };
+		D7B45C9418CDDCAC00191E62 /* TDWeakReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDWeakReference.h; sourceTree = "<group>"; };
+		D7B45C9518CDDCAC00191E62 /* TDWeakReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDWeakReference.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +130,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5507E6C918C99EBF003B84C4 /* Extensions */ = {
+		5507E6C918C99EBF003B84C4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				5507E6C218C99EAC003B84C4 /* NSObject+TDExtensions.h */,
@@ -120,13 +141,16 @@
 				5507E6C118C99EAC003B84C4 /* NSBundle+TDExtensions.m */,
 				5507E6CA18C99F30003B84C4 /* UITableView+TDExtensions.h */,
 				5507E6CB18C99F30003B84C4 /* UITableView+TDExtensions.m */,
+				552B857518CE56B500D754C3 /* UIImageView+TDExtensions.h */,
+				552B857618CE56B500D754C3 /* UIImageView+TDExtensions.m */,
 			);
-			name = Extensions;
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		5507E6D718C9A370003B84C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				55424DC018CDB7FB009883C9 /* blank.png */,
 				5507E6D318C9A362003B84C4 /* smile.png */,
 				5507E6D418C9A362003B84C4 /* smile@2x.png */,
 			);
@@ -136,24 +160,38 @@
 		5507E6DE18C9A5BE003B84C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D7B45C9418CDDCAC00191E62 /* TDWeakReference.h */,
+				D7B45C9518CDDCAC00191E62 /* TDWeakReference.m */,
+				55AE825A18CCC8C600A44280 /* TDObservableObject.h */,
+				55AE825B18CCC8C600A44280 /* TDObservableObject.m */,
+				55AE825D18CCCE5600A44280 /* TDModelObserver.h */,
+				D7B45C9118CDCB3400191E62 /* TDObervableModel.h */,
+				D7B45C9218CDCB3400191E62 /* TDObervableModel.m */,
 				5507E6D818C9A584003B84C4 /* TDModels.h */,
 				5507E6D918C9A584003B84C4 /* TDModels.m */,
 				5507E6DB18C9A5B3003B84C4 /* TDModel.h */,
 				5507E6DC18C9A5B3003B84C4 /* TDModel.m */,
+				552B857218CE47C600D754C3 /* TDModelImage.h */,
+				552B857318CE47C600D754C3 /* TDModelImage.m */,
+				552B857818CE643200D754C3 /* TDModelImages.h */,
+				552B857918CE643200D754C3 /* TDModelImages.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
 		};
-		5507E6DF18C9A5F7003B84C4 /* Views */ = {
+		55424DC218CDBBE8009883C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				558D9A4818C71467006F5CC1 /* TDViewController.h */,
+				558D9A4918C71467006F5CC1 /* TDViewController.m */,
+				5566E5A318C86248000E4EF0 /* TDViewController.xib */,
 				55E1B48D18C73A7C00AF1C57 /* TDView.h */,
 				55E1B48E18C73A7C00AF1C57 /* TDView.m */,
 				5507E6CE18C9A005003B84C4 /* TDTableCell.h */,
 				5507E6CF18C9A005003B84C4 /* TDTableCell.m */,
 				5507E6D118C9A02B003B84C4 /* TDTableCell.xib */,
 			);
-			name = Views;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		558D9A0D18C713EC006F5CC1 = {
@@ -189,15 +227,12 @@
 		558D9A1F18C713EC006F5CC1 /* TableData */ = {
 			isa = PBXGroup;
 			children = (
-				558D9A4818C71467006F5CC1 /* TDViewController.h */,
-				558D9A4918C71467006F5CC1 /* TDViewController.m */,
-				5566E5A318C86248000E4EF0 /* TDViewController.xib */,
 				558D9A2818C713EC006F5CC1 /* TDAppDelegate.h */,
 				558D9A2918C713EC006F5CC1 /* TDAppDelegate.m */,
 				558D9A2B18C713EC006F5CC1 /* Images.xcassets */,
-				5507E6DF18C9A5F7003B84C4 /* Views */,
+				55424DC218CDBBE8009883C9 /* Controller */,
 				5507E6DE18C9A5BE003B84C4 /* Models */,
-				5507E6C918C99EBF003B84C4 /* Extensions */,
+				5507E6C918C99EBF003B84C4 /* Categories */,
 				5507E6D718C9A370003B84C4 /* Images */,
 				558D9A2018C713EC006F5CC1 /* Supporting Files */,
 			);
@@ -278,7 +313,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TD;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Vitaliy Voronok";
 				TargetAttributes = {
 					558D9A3018C713EC006F5CC1 = {
@@ -314,6 +349,7 @@
 				5507E6D518C9A362003B84C4 /* smile.png in Resources */,
 				5507E6D618C9A362003B84C4 /* smile@2x.png in Resources */,
 				5566E5A418C86248000E4EF0 /* TDViewController.xib in Resources */,
+				55424DC118CDB7FB009883C9 /* blank.png in Resources */,
 				558D9A2C18C713EC006F5CC1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,13 +373,19 @@
 				558D9A4B18C71467006F5CC1 /* TDViewController.m in Sources */,
 				5507E6DD18C9A5B3003B84C4 /* TDModel.m in Sources */,
 				558D9A2A18C713EC006F5CC1 /* TDAppDelegate.m in Sources */,
+				552B857718CE56B500D754C3 /* UIImageView+TDExtensions.m in Sources */,
 				5507E6D018C9A005003B84C4 /* TDTableCell.m in Sources */,
+				552B857418CE47C600D754C3 /* TDModelImage.m in Sources */,
+				D7B45C9618CDDCAC00191E62 /* TDWeakReference.m in Sources */,
 				5507E6C818C99EAC003B84C4 /* NSString+TDExtensions.m in Sources */,
 				5507E6C718C99EAC003B84C4 /* NSObject+TDExtensions.m in Sources */,
 				5507E6CC18C99F30003B84C4 /* UITableView+TDExtensions.m in Sources */,
 				55E1B48F18C73A7C00AF1C57 /* TDView.m in Sources */,
 				558D9A2618C713EC006F5CC1 /* main.m in Sources */,
+				552B857A18CE643200D754C3 /* TDModelImages.m in Sources */,
 				5507E6DA18C9A584003B84C4 /* TDModels.m in Sources */,
+				D7B45C9318CDCB3400191E62 /* TDObervableModel.m in Sources */,
+				55AE825C18CCC8C600A44280 /* TDObservableObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +431,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -428,7 +469,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -486,7 +526,6 @@
 		558D9A4618C713EC006F5CC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableData.app/TableData";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -509,7 +548,6 @@
 		558D9A4718C713EC006F5CC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TableData.app/TableData";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

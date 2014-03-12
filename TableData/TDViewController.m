@@ -9,23 +9,25 @@
 #import "TDViewController.h"
 
 #import "TDView.h"
+#import "TDTableCell.h"
+
 #import "TDModels.h"
 #import "TDModel.h"
 
-#import "TDTableCell.h"
-
+#import "TDObservableObject.h"
 #import "NSObject+TDExtensions.h"
 #import "UITableView+TDExtensions.h"
 
 @interface TDViewController ()
-@property (nonatomic, readonly) TDView *theView;
-@property (nonatomic, retain, readwrite) TDModels *models;
+@property (nonatomic, readonly)             TDView      *mainView;
+
+- (void)loadModels;
 
 @end
 
 @implementation TDViewController
 
-@dynamic theView;
+@dynamic mainView;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -36,22 +38,13 @@
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.models = [TDModels object];
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.models load];
+    [self loadModels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +53,10 @@
     [self.models dump];
 }
 
-
-
-
 #pragma mark -
 #pragma mark Accessors
 
-- (TDView *)theView {
+- (TDView *)mainView {
     if ([self isViewLoaded] && [self.view isKindOfClass:[TDView class]]) {
         return (TDView *)self.view;
     }
@@ -74,18 +64,32 @@
     return nil;
 }
 
+- (void)setModels:(TDModels *)models {
+    if (models != _models) {
+        [_models removeObserver:self];
+        [_models release];
+
+        _models = [models retain];
+        [_models addObserver:self];
+        
+        if (_models) {
+            [self loadModels];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onEdit:(id)sender{
-    TDView *view = self.theView;
+    TDView *view = self.mainView;
 	view.editing = !view.editing;
 }
 
 - (IBAction)onAdd:(id)sender {
-    [self.models addModel:[TDModel model]];
+    [self.models addModel:[TDModel object]];
     
-    UITableView *tableView = self.theView.table;
+    UITableView *tableView = self.mainView.table;
 	
 	NSUInteger lastRow = [tableView numberOfRowsInSection:0];
 	NSIndexPath *pathForLastRow = [NSIndexPath indexPathForRow:lastRow inSection:0];
@@ -97,7 +101,17 @@
 }
 
 #pragma mark -
+#pragma mark Private
+
+- (void)loadModels {
+    self.mainView.loadingView.hidden = NO;
+    
+    [self.models load];
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.models.models count];
 }
@@ -106,7 +120,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TDTableCell *cell = [tableView reusableCellOfClass:[TDTableCell class]];
-    [cell fillWithModel:self.models.models[indexPath.row]];
+    cell.model = self.models.models[indexPath.row];
     
     return  cell;
 }
@@ -130,6 +144,15 @@
 {
     [self.models moveModelFromIndex:sourceIndexPath.row
                             toIndex:destinationIndexPath.row];
+}
+#pragma mark -
+#pragma mark TDTaskCompletion
+
+- (void)modelDidLoad:(id)object {
+    TDView *view = self.mainView;
+    
+    view.loadingView.hidden = YES;
+    [view.table reloadData];
 }
 
 @end

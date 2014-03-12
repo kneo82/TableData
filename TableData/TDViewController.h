@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TDModelObserver.h"
+
 @class TDModels;
 
-@interface TDViewController : UIViewController <UITableViewDataSource>
-@property (nonatomic, readonly) TDModels *models;
+@interface TDViewController : UIViewController <UITableViewDataSource, TDModelObserver>
+@property (nonatomic, retain) TDModels *models;
 
 - (IBAction)onEdit:(id)sender;
 - (IBAction)onAdd:(id)sender;

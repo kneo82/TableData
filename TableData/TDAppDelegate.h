@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDAppDelegate : UIResponder <UIApplicationDelegate>
+@class TDModels;
 
-@property (nonatomic, retain) UIWindow *window;
+@interface TDAppDelegate : UIResponder <UIApplicationDelegate>
+@property (nonatomic, retain)   UIWindow            *window;
 
 @end

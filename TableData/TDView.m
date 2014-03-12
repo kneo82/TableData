@@ -17,6 +17,7 @@
     self.table = nil;
     self.editButton = nil;
     self.addButton = nil;
+    self.loadingView = nil;
     
     [super dealloc];
 }

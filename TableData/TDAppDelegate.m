@@ -7,7 +7,17 @@
 //
 
 #import "TDAppDelegate.h"
+
 #import "TDViewController.h"
+
+#import "TDModels.h"
+
+#import "NSObject+TDExtensions.h"
+
+@interface TDAppDelegate ()
+@property (nonatomic, retain)   TDModels            *models;
+
+@end
 
 @implementation TDAppDelegate
 
@@ -16,6 +26,7 @@
 
 - (void)dealloc {
     self.window = nil;
+    self.models = nil;
     
     [super dealloc];
 }
@@ -24,9 +35,18 @@
 #pragma mark View Lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[[TDViewController alloc] init] autorelease];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    TDModels *models = [TDModels object];
+    self.models = models;
+    
+    TDViewController *viewController = [TDViewController object];
+    viewController.models = models;
+    
+    self.window.rootViewController = viewController;
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -35,7 +55,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    
+    [self.models save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -47,7 +67,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-   
+    [self.models save];
 }
 
 @end

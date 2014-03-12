@@ -18,7 +18,6 @@
 @interface TDModel : TDObervableModel <NSCoding>
 @property (nonatomic, copy)     NSString        *string;
 @property (nonatomic, retain)   TDModelImage    *modelImage;
-@property (nonatomic, retain)   TDModelImages   *modelImages;
 @property (nonatomic, readonly) UIImage         *image;
 
 - (void)clearingModel;

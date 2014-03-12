@@ -144,7 +144,7 @@
 				552B857518CE56B500D754C3 /* UIImageView+TDExtensions.h */,
 				552B857618CE56B500D754C3 /* UIImageView+TDExtensions.m */,
 			);
-			name = Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		5507E6D718C9A370003B84C4 /* Images */ = {

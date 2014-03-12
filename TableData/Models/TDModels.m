@@ -15,7 +15,7 @@
 
 static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
 
-static const NSUInteger kTDStringCount  = 1000;
+static const NSUInteger kTDStringCount  = 10;
 
 @interface TDModels ()
 @property (nonatomic, retain, readwrite)    NSMutableArray    *mutableModels;

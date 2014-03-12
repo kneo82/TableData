@@ -13,13 +13,13 @@
 #include "NSObject+TDExtensions.h"
 
 @interface TDModelImages ()
-@property (nonatomic, retain, readwrite)   NSMutableArray  *mutableModelImages;
+@property (nonatomic, retain) NSMutableDictionary *mutableDictionaryImages;
 
 @end
 
 @implementation TDModelImages
 
-@dynamic modelImages;
+@dynamic dictionaryImages;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -38,7 +38,7 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.mutableModelImages = nil;
+    self.mutableDictionaryImages = nil;
     
     [super dealloc];
 }
@@ -46,7 +46,8 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.mutableModelImages = [NSMutableArray array];
+
+        self.mutableDictionaryImages = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -55,9 +56,9 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSArray *)modelImages {
-    @synchronized (self.mutableModelImages) {
-        return [[self.mutableModelImages copy] autorelease];
+- (NSDictionary *)dictionaryImages {
+    @synchronized (self.mutableDictionaryImages) {
+        return [[self.mutableDictionaryImages copy] autorelease];
     }
 }
 
@@ -65,53 +66,40 @@
 #pragma mark Public
 
 - (void)addModel:(TDModelImage *)model {
-    @synchronized(self.mutableModelImages) {
-        NSMutableArray *mutableModelImages = self.mutableModelImages;
-        if (![mutableModelImages containsObject:model]) {
-            [mutableModelImages addObject:model];
+    @synchronized(self.mutableDictionaryImages) {
+        NSMutableDictionary *mutableDictionaryImages = self.mutableDictionaryImages;
+        NSString *fileName = model.imageFileName;
+        if (![mutableDictionaryImages objectForKey:fileName]) {
+            [mutableDictionaryImages setObject:model forKey:fileName];
         }
     }
 }
 
 - (void)removeModel:(TDModelImage *)model {
-    @synchronized(self.mutableModelImages) {
-        model.countUsedModel--;
-        if (0 == model.countUsedModel) {
-            [self.mutableModelImages removeObject:model];
+    model.countUsedModel--;
+    if (0 == model.countUsedModel) {
+        @synchronized(self.mutableDictionaryImages) {
+            [self.mutableDictionaryImages removeObjectForKey:model.imageFileName];
         }
     }
 }
 
-- (TDModelImage *)takeModelWhisFileName:(TDModelImage *)model {
+- (TDModelImage *)takeModelWhisFileName:(NSString *)fileName {
+    NSDictionary *dictionaryImages = self.dictionaryImages;
+
+    if (!fileName) {
+        fileName = @"smile.png";
+    }
+    
+    TDModelImage *model = nil;
+    model = [dictionaryImages objectForKey:fileName];
     if (!model) {
-        return nil;
-    }
-    @synchronized (self.mutableModelImages) {
-        NSArray *modelImages = self.modelImages;
-        if (!model.imageFileName) {
-            model.imageFileName = @"smile.png";
-        }
-        for (TDModelImage *theModel in modelImages) {
-            if (0 == [theModel.imageFileName compare:model.imageFileName]) {
-                NSArray *observers = model.observers;
-                NSArray *observersTheModel = theModel.observers;
-                for (id observer in observers) {
-                    if (![observersTheModel containsObject:observer]) {
-                        [theModel addObserver:observer];
-                    }
-                }
-                theModel.countUsedModel++;
-                if (kTDModelLoaded == theModel.state) {
-                    [theModel finishLoading];
-                }
-                return theModel;
-            }
-        }
-        model.countUsedModel++;
+        model = [TDModelImage object];
+        model.imageFileName = fileName;
         [self addModel:model];
-        [model load];
-        return model;
     }
+    model.countUsedModel++;
+    return model;
 }
 
 @end

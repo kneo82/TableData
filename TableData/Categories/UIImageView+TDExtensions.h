@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "TDModelImage.h"
+#import "TDModelObserver.h"
 
-@interface UIImageView (TDExtensions)
+@interface UIImageView (TDExtensions) <TDModelObserver>
 
 - (void)setImageFromModel:(TDModelImage *)modelImage;
 

@@ -12,6 +12,7 @@
 
 #import "NSBundle+TDExtensions.h"
 #import "NSObject+TDExtensions.h"
+#import "UIImageView+TDExtensions.h"
 
 
 @implementation TDTableCell
@@ -53,7 +54,9 @@
             [self.activityIndicator startAnimating];
             self.textLabel.text = @"Loading";
             self.imageView.image = [UIImage imageNamed:@"blank.png"];
+            
             [_model load];
+            [self fillWithModel:_model];
         }
     }
 }
@@ -63,7 +66,7 @@
 #pragma mark Accessors
 
 - (void)fillWithModel:(TDModel *)model {
-    self.imageView.image = model.image;
+    [self.imageView setImageFromModel:model.modelImage];
     self.textLabel.text = model.string;
 }
 
@@ -71,8 +74,8 @@
 #pragma mark TDTaskCompletion.h
 
 - (void)modelDidLoad:(id)object {
-    TDModel *model = object;
-    [self fillWithModel:model];
+//    TDModel *model = object;
+//    [self fillWithModel:model];
 
     [self.activityIndicator stopAnimating];
 }

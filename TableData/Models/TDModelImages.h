@@ -12,12 +12,12 @@
 @class TDModelImage;
 
 @interface TDModelImages : NSObject <TDModelObserver>
-@property (nonatomic, readonly) NSArray     *modelImages;
+@property (nonatomic, readonly) NSDictionary *dictionaryImages;
 
 + (TDModelImages *)sharedInstance;
 
 - (void)addModel:(TDModelImage *)model;
 - (void)removeModel:(TDModelImage *)model;
-- (TDModelImage *)takeModelWhisFileName:(TDModelImage *)model;
+- (TDModelImage *)takeModelWhisFileName:(NSString *)fileName;
 
 @end

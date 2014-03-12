@@ -17,7 +17,7 @@
 static const NSUInteger kTDLengthString = 20;
 
 @interface TDModel ()
-
+@property (nonatomic, retain)   TDModelImages   *modelImages;
 
 @end
 
@@ -57,10 +57,11 @@ static const NSUInteger kTDLengthString = 20;
         [_modelImage removeObserver:self];
         _modelImage = nil;
         
-        _modelImage = [modelImage retain];
-        [_modelImage addObserver:self];
+//        _modelImage = [modelImage retain];
+//        [_modelImage addObserver:self];
         if (nil != modelImage) {
-            _modelImage = [self.modelImages takeModelWhisFileName:modelImage];
+            NSString *fileName =modelImage.imageFileName;
+            _modelImage = [[self.modelImages takeModelWhisFileName:fileName] retain];
         }
     }
 }

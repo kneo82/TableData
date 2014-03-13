@@ -54,14 +54,12 @@ static const NSUInteger kTDLengthString = 20;
         if (!self.modelImages) {
             self.modelImages = [TDModelImages sharedInstance];
         }
-        [_modelImage removeObserver:self];
-        _modelImage = nil;
-        
-//        _modelImage = [modelImage retain];
-//        [_modelImage addObserver:self];
+        [_modelImage release];
+
         if (nil != modelImage) {
             NSString *fileName =modelImage.imageFileName;
-            _modelImage = [[self.modelImages takeModelWhisFileName:fileName] retain];
+            _modelImage = [[self.modelImages takeModelWithFileName:fileName] retain];
+            [self finishLoading];
         }
     }
 }
@@ -103,14 +101,6 @@ static const NSUInteger kTDLengthString = 20;
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.string forKey:@"string"];
     [aCoder encodeObject:self.modelImage forKey:@"modelImage"];
-}
-
-#pragma mark -
-#pragma mark TDTaskCompletion.h
-
-- (void)modelDidLoad:(id)object {
-    [object removeObserver:self];
-    [self finishLoading];
 }
 
 @end

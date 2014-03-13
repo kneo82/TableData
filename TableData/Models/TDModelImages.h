@@ -18,6 +18,6 @@
 
 - (void)addModel:(TDModelImage *)model;
 - (void)removeModel:(TDModelImage *)model;
-- (TDModelImage *)takeModelWhisFileName:(NSString *)fileName;
+- (TDModelImage *)takeModelWithFileName:(NSString *)fileName;
 
 @end

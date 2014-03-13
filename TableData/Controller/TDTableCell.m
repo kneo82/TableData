@@ -12,8 +12,6 @@
 
 #import "NSBundle+TDExtensions.h"
 #import "NSObject+TDExtensions.h"
-#import "UIImageView+TDExtensions.h"
-
 
 @implementation TDTableCell
 
@@ -21,18 +19,11 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.activityIndicator = nil;
     self.model = nil;
+    self.imageModel = nil;
+    self.label = nil;
     
     [super dealloc];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    UIActivityIndicatorView *spinner = self.activityIndicator;
-    spinner.center = self.imageView.center;
-    [spinner stopAnimating];
 }
 
 #pragma mark -
@@ -44,6 +35,7 @@
 
 - (void)setModel:(TDModel *)model {
     if (model != _model) {
+
         [_model removeObserver:self];
         [_model release];
         
@@ -51,33 +43,25 @@
         [_model addObserver:self];
         
         if (nil != _model) {
-            [self.activityIndicator startAnimating];
-            self.textLabel.text = @"Loading";
-            self.imageView.image = [UIImage imageNamed:@"blank.png"];
-            
+            self.label.text = @"Loading";
             [_model load];
-            [self fillWithModel:_model];
         }
     }
 }
 
-
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Public
 
 - (void)fillWithModel:(TDModel *)model {
-    [self.imageView setImageFromModel:model.modelImage];
-    self.textLabel.text = model.string;
+    [self.imageModel setImageFromModel:model.modelImage];
+    self.label.text = model.string;
 }
 
 #pragma mark -
 #pragma mark TDTaskCompletion.h
 
 - (void)modelDidLoad:(id)object {
-//    TDModel *model = object;
-//    [self fillWithModel:model];
-
-    [self.activityIndicator stopAnimating];
+    [self fillWithModel:_model];
 }
 
 @end

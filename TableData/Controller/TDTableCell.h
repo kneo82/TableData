@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "TDModelObserver.h"
+#import "TDImageView.h"
 
 @class TDModel;
 
+
 @interface TDTableCell : UITableViewCell <TDModelObserver>
-@property (nonatomic, retain)   IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain)   IBOutlet TDImageView    *imageModel;
+@property (nonatomic, retain)   IBOutlet UILabel        *label;
 
 @property (nonatomic, retain)   TDModel     *model;
 

@@ -46,7 +46,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-
         self.mutableDictionaryImages = [NSMutableDictionary dictionary];
     }
     
@@ -84,7 +83,7 @@
     }
 }
 
-- (TDModelImage *)takeModelWhisFileName:(NSString *)fileName {
+- (TDModelImage *)takeModelWithFileName:(NSString *)fileName {
     NSDictionary *dictionaryImages = self.dictionaryImages;
 
     if (!fileName) {

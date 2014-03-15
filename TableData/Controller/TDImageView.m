@@ -7,7 +7,7 @@
 //
 
 #import "TDImageView.h"
-#import "TDModelImage.h"
+#import "TDImageModel.h"
 #import "NSBundle+TDExtensions.h"
 
 @implementation TDImageView
@@ -40,7 +40,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)setImageFromModel:(TDModelImage *)modelImage {
+- (void)setImageFromModel:(TDImageModel *)modelImage {
     self.imageView.image = [UIImage imageNamed:@"blank.png"];
     if (kTDModelLoaded == modelImage.state ) {
         self.imageView.image = modelImage.image;
@@ -59,7 +59,7 @@
 - (void)modelDidLoad:(id)object {
     [object removeObserver:self];
     [self.activityIndicator stopAnimating];
-    self.imageView.image = ((TDModelImage *)object).image;
+    self.imageView.image = ((TDImageModel *)object).image;
 }
 
 @end

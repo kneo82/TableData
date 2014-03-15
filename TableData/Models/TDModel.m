@@ -8,8 +8,8 @@
 
 #import "TDModel.h"
 
-#import "TDModelImage.h"
-#import "TDModelImages.h"
+#import "TDImageModel.h"
+//#import "TDModelImages.h"
 
 #import "NSObject+TDExtensions.h"
 #import "NSString+TDExtensions.h"
@@ -39,8 +39,7 @@ static const NSUInteger kTDLengthString = 20;
     self = [super init];
     if (self) {
         self.string = [NSString randomStringOfLength:kTDLengthString];
-        self.modelImages = [TDModelImages sharedInstance];
-        self.modelImage = [TDModelImage object];
+        self.modelImage = [TDImageModel object];
     }
     
     return self;
@@ -49,16 +48,13 @@ static const NSUInteger kTDLengthString = 20;
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setModelImage:(TDModelImage *)modelImage {
+- (void)setModelImage:(TDImageModel *)modelImage {
     if (modelImage != _modelImage) {
-        if (!self.modelImages) {
-            self.modelImages = [TDModelImages sharedInstance];
-        }
         [_modelImage release];
 
         if (nil != modelImage) {
             NSString *fileName =modelImage.imageFileName;
-            _modelImage = [[self.modelImages takeModelWithFileName:fileName] retain];
+            _modelImage = [[[TDImageModel alloc] initWithFileName:fileName] retain];
             [self finishLoading];
         }
     }
@@ -74,10 +70,6 @@ static const NSUInteger kTDLengthString = 20;
 
 #pragma mark -
 #pragma mark Public
-
-- (void)clearingModel {
-    [self.modelImages removeModel:self.modelImage];
-}
 
 - (void)dump {
     self.modelImage = nil;

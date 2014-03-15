@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TDModelObserver.h"
 
-@class TDModelImage;
+@class TDImageModel;
 
 @interface TDImageView : UIView <TDModelObserver>
 @property (nonatomic, retain)  IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain)  IBOutlet UIImageView             *imageView;
 
-- (void)setImageFromModel:(TDModelImage *)modelImage;
+- (void)setImageFromModel:(TDImageModel *)modelImage;
 
 @end

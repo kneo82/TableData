@@ -10,9 +10,10 @@
 
 #import "TDObervableModel.h"
 
-@interface TDModelImage : TDObervableModel <NSCoding>
+@interface TDImageModel : TDObervableModel <NSCoding>
 @property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, copy)     NSString    *imageFileName;
-@property (nonatomic, assign)   NSUInteger  countUsedModel;
+@property (nonatomic, readonly) NSString    *imageFileName;
+
+- (id)initWithFileName:(NSString *)fileName;
 
 @end

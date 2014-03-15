@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "TDModelObserver.h"
 
-@class TDModelImage;
+@class TDImageModel;
 
 @interface TDModelImages : NSObject <TDModelObserver>
 @property (nonatomic, readonly) NSDictionary *dictionaryImages;
 
 + (TDModelImages *)sharedInstance;
 
-- (void)addModel:(TDModelImage *)model;
-- (void)removeModel:(TDModelImage *)model;
-- (TDModelImage *)takeModelWithFileName:(NSString *)fileName;
+- (void)addModel:(TDImageModel *)model;
+- (void)removeModel:(TDImageModel *)model;
+- (TDImageModel *)takeModelWithFileName:(NSString *)fileName;
 
 @end

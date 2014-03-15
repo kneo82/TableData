@@ -6,18 +6,22 @@
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDModelImage.h"
+#import "TDImageModel.h"
+#import "TDModelImages.h"
 
+#import "NSObject+TDExtensions.h"
+static NSString *const defaultFileName = @"smile.png";
 
-@interface TDModelImage ()
+@interface TDImageModel ()
 @property (nonatomic, retain)   UIImage         *image;
 @property (nonatomic, readonly) NSString        *path;
+@property (nonatomic, copy)     NSString        *imageFileName;
 
 - (NSString *)pathForFileName:(NSString *)fileName;
 
 @end
 
-@implementation TDModelImage
+@implementation TDImageModel
 
 @dynamic path;
 
@@ -30,12 +34,25 @@
     [super dealloc];
 }
 
-- (id)init {
+- (id)initWithFileName:(NSString *)fileName {
+    TDModelImages *cache = [TDModelImages sharedInstance];
+    TDImageModel *model = [cache takeModelWithFileName:fileName];
+    if (model) {
+        [self autorelease];
+        return [model retain];
+    }
+
     self = [super init];
     if (self) {
+        self.imageFileName = fileName;
+        [cache addModel:self];
     }
     
     return self;
+}
+
+- (id)init {
+    return [self initWithFileName:defaultFileName];
 }
 
 #pragma mark -

@@ -8,7 +8,7 @@
 
 #import "TDModelImages.h"
 
-#import "TDModelImage.h"
+#import "TDImageModel.h"
 
 #include "NSObject+TDExtensions.h"
 
@@ -64,7 +64,7 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)addModel:(TDModelImage *)model {
+- (void)addModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
         NSMutableDictionary *mutableDictionaryImages = self.mutableDictionaryImages;
         NSString *fileName = model.imageFileName;
@@ -74,31 +74,19 @@
     }
 }
 
-- (void)removeModel:(TDModelImage *)model {
-    model.countUsedModel--;
-    if (0 == model.countUsedModel) {
+- (void)removeModel:(TDImageModel *)model {
+
+    if (NO) {
         @synchronized(self.mutableDictionaryImages) {
             [self.mutableDictionaryImages removeObjectForKey:model.imageFileName];
         }
     }
 }
 
-- (TDModelImage *)takeModelWithFileName:(NSString *)fileName {
-    NSDictionary *dictionaryImages = self.dictionaryImages;
-
-    if (!fileName) {
-        fileName = @"smile.png";
+- (TDImageModel *)takeModelWithFileName:(NSString *)fileName {
+    @synchronized(self) {
+        return [self.mutableDictionaryImages objectForKey:fileName];
     }
-    
-    TDModelImage *model = nil;
-    model = [dictionaryImages objectForKey:fileName];
-    if (!model) {
-        model = [TDModelImage object];
-        model.imageFileName = fileName;
-        [self addModel:model];
-    }
-    model.countUsedModel++;
-    return model;
 }
 
 @end

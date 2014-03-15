@@ -36,8 +36,8 @@
 - (void)setModel:(TDModel *)model {
     if (model != _model) {
 
-        [_model removeObserver:self];
-        [_model release];
+//        [_model removeObserver:self];
+//        [_model release];
         
         _model = [model retain];
         [_model addObserver:self];

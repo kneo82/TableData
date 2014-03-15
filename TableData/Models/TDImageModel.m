@@ -75,22 +75,33 @@ static NSString *const defaultFileName = @"smile.png";
 - (void)performLoading {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         sleep(arc4random_uniform(5));
+        
         UIImage *image = nil;
         NSString *imageFileName = self.imageFileName;
+        
         if (imageFileName == nil || 0 == [imageFileName compare:@"smile.png"]) {
-            imageFileName = @"smile.png";
             image = [UIImage imageNamed:imageFileName];
         } else {
             image = [UIImage imageWithContentsOfFile:self.path];
         }
         
         self.image = image;
-        self.imageFileName = imageFileName;
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self finishLoading];
-        });
+        [self finishLoading];
+
     });
+}
+
+- (oneway void)release {
+    @synchronized (self) {
+        [super release];
+        
+        if (1 == [self retainCount]) {
+            TDModelImages *cache = [TDModelImages sharedInstance];
+            [cache removeModel:self];
+
+        }
+    }
 }
 
 - (void)dump {
@@ -103,12 +114,10 @@ static NSString *const defaultFileName = @"smile.png";
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        self.imageFileName = [aDecoder decodeObjectForKey:@"imageFileName"];
-    }
+    NSString *fileName = [aDecoder decodeObjectForKey:@"imageFileName"];
+    TDImageModel *model = [[self initWithFileName:fileName] autorelease];
     
-    return self;
+    return [model retain];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

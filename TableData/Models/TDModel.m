@@ -17,7 +17,6 @@
 static const NSUInteger kTDLengthString = 20;
 
 @interface TDModel ()
-@property (nonatomic, retain)   TDModelImages   *modelImages;
 
 @end
 
@@ -29,8 +28,7 @@ static const NSUInteger kTDLengthString = 20;
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.modelImage = nil;
-    self.modelImages = nil;
+    self.modelImage = nil; 
     
     [super dealloc];
 }

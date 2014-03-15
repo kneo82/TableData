@@ -76,7 +76,7 @@ static const NSUInteger kTDStringCount  = 10;
 - (void)removeModel:(TDModel *)model {
     @synchronized(self.mutableModels) {
         [self.mutableModels removeObject:model];
-//        [model clearingModel];
+        [model release];
     }
 }
 

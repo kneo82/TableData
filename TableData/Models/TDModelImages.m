@@ -75,9 +75,8 @@
 }
 
 - (void)removeModel:(TDImageModel *)model {
-
-    if (NO) {
-        @synchronized(self.mutableDictionaryImages) {
+    @synchronized(self.mutableDictionaryImages) {
+        if (model.imageFileName) {
             [self.mutableDictionaryImages removeObjectForKey:model.imageFileName];
         }
     }

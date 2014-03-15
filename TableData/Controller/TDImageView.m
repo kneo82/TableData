@@ -51,6 +51,7 @@
             [modelImage load];
         }
     }
+    [modelImage release];
 }
 
 #pragma mark -

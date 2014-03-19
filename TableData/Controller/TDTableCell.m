@@ -35,15 +35,13 @@
 
 - (void)setModel:(TDModel *)model {
     if (model != _model) {
-
-//        [_model removeObserver:self];
-//        [_model release];
+        [_model removeObserver:self];
+        [_model release];
         
         _model = [model retain];
         [_model addObserver:self];
         
-        if (nil != _model) {
-            self.label.text = @"Loading";
+        if (_model) {
             [_model load];
         }
     }
@@ -61,7 +59,7 @@
 #pragma mark TDTaskCompletion.h
 
 - (void)modelDidLoad:(id)object {
-    [self fillWithModel:_model];
+    [self fillWithModel:object];
 }
 
 @end

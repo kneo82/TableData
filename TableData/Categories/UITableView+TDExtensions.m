@@ -12,11 +12,11 @@
 @implementation UITableView (TDExtensions)
 
 - (id)reusableCellOfClass:(Class)theClass {
-    NSString *identifier = NSStringFromClass(theClass);
-    
-    id cell = [self dequeueReusableCellWithIdentifier:identifier];
-	if (!cell) {
-        cell = [[NSBundle mainBundle] loadClass:theClass];
+	NSString *className = NSStringFromClass(theClass);
+	id cell = [self dequeueReusableCellWithIdentifier:className];
+	
+	if (nil == cell) {
+		cell = [[NSBundle mainBundle] loadClass:theClass];
 	}
 	
 	return cell;

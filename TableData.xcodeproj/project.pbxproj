@@ -21,6 +21,7 @@
 		552B857A18CE643200D754C3 /* TDModelImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857918CE643200D754C3 /* TDModelImages.m */; };
 		55424DC118CDB7FB009883C9 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 55424DC018CDB7FB009883C9 /* blank.png */; };
 		5566E5A418C86248000E4EF0 /* TDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDViewController.xib */; };
+		5574500418D6F7350034ED13 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574500318D6F7350034ED13 /* FacebookSDK.framework */; };
 		558D9A1A18C713EC006F5CC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1918C713EC006F5CC1 /* Foundation.framework */; };
 		558D9A1C18C713EC006F5CC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1B18C713EC006F5CC1 /* CoreGraphics.framework */; };
 		558D9A1E18C713EC006F5CC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1D18C713EC006F5CC1 /* UIKit.framework */; };
@@ -75,6 +76,7 @@
 		552B857918CE643200D754C3 /* TDModelImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDModelImages.m; sourceTree = "<group>"; };
 		55424DC018CDB7FB009883C9 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank.png; path = Images/blank.png; sourceTree = "<group>"; };
 		5566E5A318C86248000E4EF0 /* TDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDViewController.xib; sourceTree = "<group>"; };
+		5574500318D6F7350034ED13 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = SOURCE_ROOT; };
 		558D9A1618C713EC006F5CC1 /* TableData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558D9A1918C713EC006F5CC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		558D9A1B18C713EC006F5CC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				558D9A1C18C713EC006F5CC1 /* CoreGraphics.framework in Frameworks */,
+				5574500418D6F7350034ED13 /* FacebookSDK.framework in Frameworks */,
 				558D9A1E18C713EC006F5CC1 /* UIKit.framework in Frameworks */,
 				558D9A1A18C713EC006F5CC1 /* Foundation.framework in Frameworks */,
 			);
@@ -216,6 +219,7 @@
 		558D9A1818C713EC006F5CC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5574500318D6F7350034ED13 /* FacebookSDK.framework */,
 				558D9A1918C713EC006F5CC1 /* Foundation.framework */,
 				558D9A1B18C713EC006F5CC1 /* CoreGraphics.framework */,
 				558D9A1D18C713EC006F5CC1 /* UIKit.framework */,
@@ -502,6 +506,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Kneo82/Desktop/TableData,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableData/TableData-Prefix.pch";
 				INFOPLIST_FILE = "TableData/TableData-Info.plist";
@@ -515,6 +523,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Kneo82/Desktop/TableData,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableData/TableData-Prefix.pch";
 				INFOPLIST_FILE = "TableData/TableData-Info.plist";

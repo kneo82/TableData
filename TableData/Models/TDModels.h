@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #import "TDObervableModel.h"
 

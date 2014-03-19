@@ -19,8 +19,6 @@
 
 @implementation TDModelImages
 
-@dynamic dictionaryImages;
-
 #pragma mark -
 #pragma mark Class Methods
 
@@ -53,21 +51,12 @@
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (NSDictionary *)dictionaryImages {
-    @synchronized (self.mutableDictionaryImages) {
-        return [[self.mutableDictionaryImages copy] autorelease];
-    }
-}
-
-#pragma mark -
 #pragma mark Public
 
 - (void)addModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
         NSMutableDictionary *mutableDictionaryImages = self.mutableDictionaryImages;
-        NSString *fileName = model.imageFileName;
+        NSString *fileName = model.imageFilePath;
         if (![mutableDictionaryImages objectForKey:fileName]) {
             [mutableDictionaryImages setObject:model forKey:fileName];
         }
@@ -76,8 +65,8 @@
 
 - (void)removeModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
-        if (model.imageFileName) {
-            [self.mutableDictionaryImages removeObjectForKey:model.imageFileName];
+        if (model.imageFilePath) {
+            [self.mutableDictionaryImages removeObjectForKey:model.imageFilePath];
         }
     }
 }

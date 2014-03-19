@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #import "TDModelObserver.h"
 
 @class TDModels;
 
-@interface TDViewController : UIViewController <UITableViewDataSource, TDModelObserver>
+@interface TDViewController : UIViewController <UITableViewDataSource, TDModelObserver, FBLoginViewDelegate, TDModelObserver>
 @property (nonatomic, retain) TDModels *models;
 
 - (IBAction)onEdit:(id)sender;

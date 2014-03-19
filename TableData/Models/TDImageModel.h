@@ -12,7 +12,7 @@
 
 @interface TDImageModel : TDObervableModel <NSCoding>
 @property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, readonly) NSString    *imageFileName;
+@property (nonatomic, readonly) NSString    *imageFilePath;
 
 - (id)initWithFileName:(NSString *)fileName;
 

@@ -10,6 +10,11 @@
 #import "TDImageModel.h"
 #import "NSBundle+TDExtensions.h"
 
+@interface TDImageView ()
+@property (nonatomic, retain)   TDImageModel *modelImage;
+
+@end
+
 @implementation TDImageView
 
 #pragma mark -
@@ -18,16 +23,9 @@
 - (void)dealloc {
     self.activityIndicator = nil;
     self.imageView = nil;
+    self.modelImage = nil;
     
     [super dealloc];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    UIActivityIndicatorView *spinner = self.activityIndicator;
-    spinner.center = self.center;
-    [spinner stopAnimating];
 }
 
 #pragma mark -
@@ -41,26 +39,23 @@
 #pragma mark Public
 
 - (void)setImageFromModel:(TDImageModel *)modelImage {
-    self.imageView.image = [UIImage imageNamed:@"blank.png"];
-    if (kTDModelLoaded == modelImage.state ) {
-        self.imageView.image = modelImage.image;
-    } else {
-        [self.activityIndicator startAnimating];
-        [modelImage addObserver:self];
-        if (kTDModelLoading != modelImage.state) {
-            [modelImage load];
-        }
+    if (_modelImage != modelImage) {
+        [_modelImage removeObserver:self];
+        [_modelImage release];
+        
+        _modelImage = [modelImage retain];
+        [_modelImage addObserver:self];
+        
+        [_modelImage load];
     }
-    [modelImage release];
 }
 
 #pragma mark -
 #pragma mark TDTaskCompletion.h
 
 - (void)modelDidLoad:(id)object {
-    [object removeObserver:self];
     [self.activityIndicator stopAnimating];
-    self.imageView.image = ((TDImageModel *)object).image;
+    self.imageView.image = self.modelImage.image;
 }
 
 @end

@@ -22,7 +22,7 @@ static const NSUInteger kTDLengthString = 20;
 
 @implementation TDModel
 
-@dynamic image;
+
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -50,19 +50,11 @@ static const NSUInteger kTDLengthString = 20;
     if (modelImage != _modelImage) {
         [_modelImage release];
 
-        if (nil != modelImage) {
-            NSString *fileName =modelImage.imageFileName;
-            _modelImage = [[[TDImageModel alloc] initWithFileName:fileName] retain];
+        _modelImage = [modelImage retain];
+        if (nil != _modelImage) {
+            
             [self finishLoading];
         }
-    }
-}
-
-- (UIImage *)image {
-    if (kTDModelLoaded == self.modelImage.state) {
-        return self.modelImage.image;
-    } else {
-        return [UIImage imageNamed:@"blank.png"];
     }
 }
 

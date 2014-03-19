@@ -37,6 +37,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
+    [FBProfilePictureView class];
+    
     TDModels *models = [TDModels object];
     self.models = models;
     
@@ -48,6 +50,16 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    return wasHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

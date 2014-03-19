@@ -12,7 +12,6 @@
 @class TDImageModel;
 
 @interface TDModelImages : NSObject <TDModelObserver>
-@property (nonatomic, readonly) NSDictionary *dictionaryImages;
 
 + (TDModelImages *)sharedInstance;
 

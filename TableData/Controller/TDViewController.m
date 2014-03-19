@@ -19,7 +19,8 @@
 #import "UITableView+TDExtensions.h"
 
 @interface TDViewController ()
-@property (nonatomic, readonly)             TDView      *mainView;
+@property (nonatomic, readonly) TDView                  *mainView;
+@property (nonatomic, retain)   IBOutlet FBLoginView    *loginView;
 
 - (void)loadModels;
 
@@ -34,8 +35,20 @@
 
 - (void)dealloc {
     self.models = nil;
-    
+    self.loginView = nil;
     [super dealloc];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.mainView.loadingView.hidden = NO;
+        FBLoginView *loginView =[[[FBLoginView alloc] init] autorelease];
+        [loginView setDelegate:self];
+        self.loginView = [loginView retain];
+    }
+    
+    return self;
 }
 
 #pragma mark -
@@ -43,7 +56,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.loginView = nil;
+
     [self loadModels];
 }
 
@@ -120,8 +134,10 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TDTableCell *cell = [tableView reusableCellOfClass:[TDTableCell class]];
-    cell.model = self.models.models[indexPath.row];
     
+    TDModel *cellModel = self.models.models[indexPath.row];
+	cell.model = cellModel;
+
     return  cell;
 }
 
@@ -130,10 +146,10 @@
   forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.models removeModel:self.models.models[indexPath.row]];
         [tableView updateTableViewWithBlock:^{
-            [self.models removeModel:self.models.models[indexPath.row]];
             [tableView deleteRowsAtIndexPaths:@[indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+							 withRowAnimation:UITableViewRowAnimationFade];
         }];
 	}
 }
@@ -145,6 +161,7 @@
     [self.models moveModelFromIndex:sourceIndexPath.row
                             toIndex:destinationIndexPath.row];
 }
+
 #pragma mark -
 #pragma mark TDTaskCompletion
 
@@ -153,6 +170,25 @@
     
     view.loadingView.hidden = YES;
     [view.table reloadData];
+}
+
+#pragma mark -
+#pragma mark FBLoginViewDelegate
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    if (!self.models) {
+        self.models = [TDModels object];
+    }
+}
+
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    self.models = nil;
+    [self.mainView.table reloadData];
+    self.mainView.loadingView.hidden = NO;
 }
 
 @end

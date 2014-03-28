@@ -18,7 +18,7 @@
 		552B857418CE47C600D754C3 /* TDImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857318CE47C600D754C3 /* TDImageModel.m */; };
 		552B857A18CE643200D754C3 /* TDModelImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857918CE643200D754C3 /* TDModelImages.m */; };
 		55424DC118CDB7FB009883C9 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 55424DC018CDB7FB009883C9 /* blank.png */; };
-		5566E5A418C86248000E4EF0 /* TDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDViewController.xib */; };
+		5566E5A418C86248000E4EF0 /* TDFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */; };
 		5571118318E2C3E60065819C /* IDPCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E318E2C3E60065819C /* IDPCoreDataManager.m */; };
 		5571118418E2C3E60065819C /* NSManagedObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E518E2C3E60065819C /* NSManagedObject+IDPExtensions.m */; };
 		5571118518E2C3E60065819C /* NSManagedObjectContext+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E718E2C3E60065819C /* NSManagedObjectContext+IDPExtensions.m */; };
@@ -83,12 +83,13 @@
 		558D9A3518C713EC006F5CC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D9A1D18C713EC006F5CC1 /* UIKit.framework */; };
 		558D9A3D18C713EC006F5CC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 558D9A3B18C713EC006F5CC1 /* InfoPlist.strings */; };
 		558D9A3F18C713EC006F5CC1 /* TableDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A3E18C713EC006F5CC1 /* TableDataTests.m */; };
-		558D9A4B18C71467006F5CC1 /* TDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A4918C71467006F5CC1 /* TDViewController.m */; };
+		558D9A4B18C71467006F5CC1 /* TDFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A4918C71467006F5CC1 /* TDFriendsViewController.m */; };
 		55B5055D18E55305001C78DA /* Task in Resources */ = {isa = PBXBuildFile; fileRef = 55B5055C18E55305001C78DA /* Task */; };
-		55B5056118E5535C001C78DA /* TDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5055F18E5535C001C78DA /* TDLoginView.m */; };
-		55B5056218E5535C001C78DA /* TDLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B5056018E5535C001C78DA /* TDLoginView.xib */; };
+		55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5055F18E5535C001C78DA /* TDLoginViewController.m */; };
+		55B5056218E5535C001C78DA /* TDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B5056018E5535C001C78DA /* TDLoginViewController.xib */; };
+		55B5056618E559B6001C78DA /* TDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5056518E559B6001C78DA /* TDLoginView.m */; };
 		55CB88A318D1A00F00421DDB /* TDImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB88A218D1A00F00421DDB /* TDImageView.m */; };
-		55E1B48F18C73A7C00AF1C57 /* TDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1B48E18C73A7C00AF1C57 /* TDView.m */; };
+		55E1B48F18C73A7C00AF1C57 /* TDFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1B48E18C73A7C00AF1C57 /* TDFriendsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +120,7 @@
 		552B857818CE643200D754C3 /* TDModelImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDModelImages.h; path = TableData/Models/TDModelImages.h; sourceTree = SOURCE_ROOT; };
 		552B857918CE643200D754C3 /* TDModelImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDModelImages.m; path = TableData/Models/TDModelImages.m; sourceTree = SOURCE_ROOT; };
 		55424DC018CDB7FB009883C9 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank.png; path = Images/blank.png; sourceTree = "<group>"; };
-		5566E5A318C86248000E4EF0 /* TDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDViewController.xib; sourceTree = "<group>"; };
+		5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDFriendsViewController.xib; sourceTree = "<group>"; };
 		557110DA18E2C3E60065819C /* IDPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDPKit.h; path = IDAPKit/src/IDPKit.h; sourceTree = SOURCE_ROOT; };
 		557110E118E2C3E60065819C /* IDPActiveRecordKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPActiveRecordKit.h; sourceTree = "<group>"; };
 		557110E218E2C3E60065819C /* IDPCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPCoreDataManager.h; sourceTree = "<group>"; };
@@ -251,16 +252,18 @@
 		558D9A3A18C713EC006F5CC1 /* TableDataTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TableDataTests-Info.plist"; sourceTree = "<group>"; };
 		558D9A3C18C713EC006F5CC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		558D9A3E18C713EC006F5CC1 /* TableDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDataTests.m; sourceTree = "<group>"; };
-		558D9A4818C71467006F5CC1 /* TDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDViewController.h; sourceTree = "<group>"; };
-		558D9A4918C71467006F5CC1 /* TDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDViewController.m; sourceTree = "<group>"; };
+		558D9A4818C71467006F5CC1 /* TDFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendsViewController.h; sourceTree = "<group>"; };
+		558D9A4918C71467006F5CC1 /* TDFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendsViewController.m; sourceTree = "<group>"; };
 		55B5055C18E55305001C78DA /* Task */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task; path = TableData/Task; sourceTree = "<group>"; };
-		55B5055E18E5535C001C78DA /* TDLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginView.h; sourceTree = "<group>"; };
-		55B5055F18E5535C001C78DA /* TDLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginView.m; sourceTree = "<group>"; };
-		55B5056018E5535C001C78DA /* TDLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDLoginView.xib; sourceTree = "<group>"; };
+		55B5055E18E5535C001C78DA /* TDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginViewController.h; sourceTree = "<group>"; };
+		55B5055F18E5535C001C78DA /* TDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginViewController.m; sourceTree = "<group>"; };
+		55B5056018E5535C001C78DA /* TDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDLoginViewController.xib; sourceTree = "<group>"; };
+		55B5056418E559B6001C78DA /* TDLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginView.h; sourceTree = "<group>"; };
+		55B5056518E559B6001C78DA /* TDLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginView.m; sourceTree = "<group>"; };
 		55CB88A118D1A00F00421DDB /* TDImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageView.h; sourceTree = "<group>"; };
 		55CB88A218D1A00F00421DDB /* TDImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageView.m; sourceTree = "<group>"; };
-		55E1B48D18C73A7C00AF1C57 /* TDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDView.h; sourceTree = "<group>"; };
-		55E1B48E18C73A7C00AF1C57 /* TDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDView.m; sourceTree = "<group>"; };
+		55E1B48D18C73A7C00AF1C57 /* TDFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendsView.h; sourceTree = "<group>"; };
+		55E1B48E18C73A7C00AF1C57 /* TDFriendsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,16 +332,7 @@
 		55424DC218CDBBE8009883C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				558D9A4818C71467006F5CC1 /* TDViewController.h */,
-				558D9A4918C71467006F5CC1 /* TDViewController.m */,
-				5566E5A318C86248000E4EF0 /* TDViewController.xib */,
-				55E1B48D18C73A7C00AF1C57 /* TDView.h */,
-				55E1B48E18C73A7C00AF1C57 /* TDView.m */,
-				5507E6CE18C9A005003B84C4 /* TDTableCell.h */,
-				5507E6CF18C9A005003B84C4 /* TDTableCell.m */,
-				5507E6D118C9A02B003B84C4 /* TDTableCell.xib */,
-				55CB88A118D1A00F00421DDB /* TDImageView.h */,
-				55CB88A218D1A00F00421DDB /* TDImageView.m */,
+				55B5056718E5872B001C78DA /* FriendsViewController */,
 				55B5056318E55378001C78DA /* LoginViewController */,
 			);
 			name = Controller;
@@ -813,11 +807,30 @@
 		55B5056318E55378001C78DA /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
-				55B5055E18E5535C001C78DA /* TDLoginView.h */,
-				55B5055F18E5535C001C78DA /* TDLoginView.m */,
-				55B5056018E5535C001C78DA /* TDLoginView.xib */,
+				55B5055E18E5535C001C78DA /* TDLoginViewController.h */,
+				55B5055F18E5535C001C78DA /* TDLoginViewController.m */,
+				55B5056018E5535C001C78DA /* TDLoginViewController.xib */,
+				55B5056418E559B6001C78DA /* TDLoginView.h */,
+				55B5056518E559B6001C78DA /* TDLoginView.m */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		55B5056718E5872B001C78DA /* FriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				558D9A4818C71467006F5CC1 /* TDFriendsViewController.h */,
+				558D9A4918C71467006F5CC1 /* TDFriendsViewController.m */,
+				5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */,
+				55E1B48D18C73A7C00AF1C57 /* TDFriendsView.h */,
+				55E1B48E18C73A7C00AF1C57 /* TDFriendsView.m */,
+				5507E6CE18C9A005003B84C4 /* TDTableCell.h */,
+				5507E6CF18C9A005003B84C4 /* TDTableCell.m */,
+				5507E6D118C9A02B003B84C4 /* TDTableCell.xib */,
+				55CB88A118D1A00F00421DDB /* TDImageView.h */,
+				55CB88A218D1A00F00421DDB /* TDImageView.m */,
+			);
+			path = FriendsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -899,9 +912,9 @@
 				5507E6D218C9A02B003B84C4 /* TDTableCell.xib in Resources */,
 				558D9A2418C713EC006F5CC1 /* InfoPlist.strings in Resources */,
 				5507E6D518C9A362003B84C4 /* smile.png in Resources */,
-				55B5056218E5535C001C78DA /* TDLoginView.xib in Resources */,
+				55B5056218E5535C001C78DA /* TDLoginViewController.xib in Resources */,
 				5507E6D618C9A362003B84C4 /* smile@2x.png in Resources */,
-				5566E5A418C86248000E4EF0 /* TDViewController.xib in Resources */,
+				5566E5A418C86248000E4EF0 /* TDFriendsViewController.xib in Resources */,
 				55424DC118CDB7FB009883C9 /* blank.png in Resources */,
 				558D9A2C18C713EC006F5CC1 /* Images.xcassets in Resources */,
 				55B5055D18E55305001C78DA /* Task in Resources */,
@@ -924,7 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5571119F18E2C3E60065819C /* IDPMutableDictionary.m in Sources */,
-				558D9A4B18C71467006F5CC1 /* TDViewController.m in Sources */,
+				558D9A4B18C71467006F5CC1 /* TDFriendsViewController.m in Sources */,
 				5507E6DD18C9A5B3003B84C4 /* TDModel.m in Sources */,
 				557111C518E2C3E60065819C /* UIViewController+IDPInitialization.m in Sources */,
 				5571119B18E2C3E60065819C /* IDPMachTimer.m in Sources */,
@@ -943,7 +956,7 @@
 				5571119E18E2C3E60065819C /* IDPMutableArray.m in Sources */,
 				5571119A18E2C3E60065819C /* IDPKVOMutableArray.m in Sources */,
 				557111A418E2C3E60065819C /* NSObject+IDPOCExtensions.m in Sources */,
-				55B5056118E5535C001C78DA /* TDLoginView.m in Sources */,
+				55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */,
 				557111AD18E2C3E60065819C /* IDPURLRequest.m in Sources */,
 				5571118E18E2C3E60065819C /* NSDate+IDPExtensions.m in Sources */,
 				5571118A18E2C3E60065819C /* CGGeometry+IDPExtensions.m in Sources */,
@@ -962,7 +975,7 @@
 				5571119718E2C3E60065819C /* IDPBufferArray.m in Sources */,
 				5571119118E2C3E60065819C /* NSObject+IDPExtensions.m in Sources */,
 				557111A818E2C3E60065819C /* IDPRetainingReference.m in Sources */,
-				55E1B48F18C73A7C00AF1C57 /* TDView.m in Sources */,
+				55E1B48F18C73A7C00AF1C57 /* TDFriendsView.m in Sources */,
 				557111A218E2C3E60065819C /* IDPOCImplementation.m in Sources */,
 				557111AE18E2C3E60065819C /* IDPWeakArray.m in Sources */,
 				557111BF18E2C3E60065819C /* UIImage+IDPExtensions.m in Sources */,
@@ -977,6 +990,7 @@
 				557111BE18E2C3E60065819C /* UIEvent+IDPExtensions.m in Sources */,
 				557111A118E2C3E60065819C /* IDPOCContext.m in Sources */,
 				557111A618E2C3E60065819C /* IDPObservableObject.m in Sources */,
+				55B5056618E559B6001C78DA /* TDLoginView.m in Sources */,
 				5571119D18E2C3E60065819C /* IDPSingletonModel.m in Sources */,
 				557111A018E2C3E60065819C /* IDPModelMixin.m in Sources */,
 				557111B618E2C3E60065819C /* IDPNetworkReachability.m in Sources */,

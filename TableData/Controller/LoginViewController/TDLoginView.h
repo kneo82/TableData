@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface TDLoginView : UIViewController
+@interface TDLoginView : UIView
+@property (nonatomic, retain)   IBOutlet UILabel                *nameLable;
+@property (nonatomic, retain)   IBOutlet FBLoginView            *loginView;
+@property (nonatomic, retain)   IBOutlet FBProfilePictureView   *pictureView;
+@property (nonatomic, retain)   IBOutlet UIButton               *buttonFriends;
 
 @end

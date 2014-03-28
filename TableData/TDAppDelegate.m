@@ -7,8 +7,10 @@
 //
 
 #import "TDAppDelegate.h"
-#import "TDViewController.h"
+#import "TDFriendsViewController.h"
 #import "TDModels.h"
+#import "TDLoginViewController.h"
+#import "IDPKit.h"
 
 @interface TDAppDelegate ()
 @property (nonatomic, retain)   TDModels    *models;
@@ -35,13 +37,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    TDModels *models = [TDModels object];
-    self.models = models;
+    TDLoginViewController *loginController = [[TDLoginViewController newViewControllerWithDefaultNib] autorelease];
+    UIViewController *controller = [[[UINavigationController alloc] initWithRootViewController:loginController] autorelease];
     
-    TDViewController *viewController = [TDViewController object];
-    viewController.models = models;
-    
-    self.window.rootViewController = viewController;
+    self.window.rootViewController = controller;
     
     [self.window makeKeyAndVisible];
     

@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IDPKit.h"
 
-#import "TDObervableModel.h"
-
-@interface TDImageModel : TDObervableModel <NSCoding>
+@interface TDImageModel : IDPModel <NSCoding>
 @property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, readonly) NSString    *imageFilePath;
 
-- (id)initWithFileName:(NSString *)fileName;
+- (id)initWithFilePath:(NSString *)filePath;
 
 @end

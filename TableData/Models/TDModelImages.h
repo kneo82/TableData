@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TDModelObserver.h"
+
+#import "IDPKit.h"
 
 @class TDImageModel;
 
-@interface TDModelImages : NSObject <TDModelObserver>
+@interface TDModelImages : IDPSingletonModel
 
-+ (TDModelImages *)sharedInstance;
++ (TDModelImages *)sharedObject;
 
 - (void)addModel:(TDImageModel *)model;
 - (void)removeModel:(TDImageModel *)model;

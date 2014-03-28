@@ -18,6 +18,7 @@
     self.editButton = nil;
     self.addButton = nil;
     self.loadingView = nil;
+    self.loginView = nil;
     
     [super dealloc];
 }

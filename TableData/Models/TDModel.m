@@ -9,20 +9,8 @@
 #import "TDModel.h"
 
 #import "TDImageModel.h"
-//#import "TDModelImages.h"
-
-#import "NSObject+TDExtensions.h"
-#import "NSString+TDExtensions.h"
-
-static const NSUInteger kTDLengthString = 20;
-
-@interface TDModel ()
-
-@end
 
 @implementation TDModel
-
-
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -36,7 +24,6 @@ static const NSUInteger kTDLengthString = 20;
 - (id)init {
     self = [super init];
     if (self) {
-        self.string = [NSString randomStringOfLength:kTDLengthString];
         self.modelImage = [TDImageModel object];
     }
     
@@ -48,11 +35,12 @@ static const NSUInteger kTDLengthString = 20;
 
 - (void)setModelImage:(TDImageModel *)modelImage {
     if (modelImage != _modelImage) {
+        [_modelImage removeObserver:self];
         [_modelImage release];
 
         _modelImage = [modelImage retain];
+        [_modelImage addObserver:self];
         if (nil != _modelImage) {
-            
             [self finishLoading];
         }
     }

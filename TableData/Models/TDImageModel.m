@@ -9,7 +9,6 @@
 #import "TDImageModel.h"
 #import "TDModelImages.h"
 
-#import "NSObject+TDExtensions.h"
 static NSString *const defaultFileName = @"smile.png";
 
 @interface TDImageModel ()
@@ -34,11 +33,12 @@ static NSString *const defaultFileName = @"smile.png";
     [super dealloc];
 }
 
-- (id)initWithFileName:(NSString *)filePath {
-    TDModelImages *cache = [TDModelImages sharedInstance];
+- (id)initWithFilePath:(NSString *)filePath {
+    TDModelImages *cache = [TDModelImages sharedObject];
     TDImageModel *model = [cache takeModelWithFileName:filePath];
     if (model) {
         [self autorelease];
+        
         return [model retain];
     }
 
@@ -52,7 +52,7 @@ static NSString *const defaultFileName = @"smile.png";
 }
 
 - (id)init {
-    return [self initWithFileName:defaultFileName];
+    return [self initWithFilePath:defaultFileName];
 }
 
 #pragma mark -
@@ -72,9 +72,13 @@ static NSString *const defaultFileName = @"smile.png";
 #pragma mark -
 #pragma mark Public
 
-- (void)performLoading {
+- (BOOL)load {
+    if(![super load]) {
+        return NO;
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        sleep(arc4random_uniform(2));
+        sleep(arc4random_uniform(3));
         
         UIImage *image = nil;
         NSString *imageFilePath = self.imageFilePath;
@@ -84,21 +88,27 @@ static NSString *const defaultFileName = @"smile.png";
         } else {
             NSURL *url = [NSURL URLWithString:self.imageFilePath];
             NSData *dataImage = [NSData dataWithContentsOfURL:url];
-            image = [UIImage imageWithData:dataImage];
+            NSString *path = [self pathForFileName:[url lastPathComponent]];
+            if (dataImage) {
+                image = [UIImage imageWithData:dataImage];
+                [dataImage writeToFile:path atomically:YES];
+            } else {
+                image = [UIImage imageWithContentsOfFile:path];
+            }
         }
         
         self.image = image;
         
         [self finishLoading];
-
     });
+    return YES;
 }
 
 - (oneway void)release {
     @synchronized (self) {
-        [super release];        
+        [super release];
         if (1 == [self retainCount]) {
-            TDModelImages *cache = [TDModelImages sharedInstance];
+            TDModelImages *cache = [TDModelImages sharedObject];
             [cache removeModel:self];
         }
     }
@@ -115,8 +125,7 @@ static NSString *const defaultFileName = @"smile.png";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     NSString *fileName = [aDecoder decodeObjectForKey:@"imageFileName"];
-    TDImageModel *model = [[self initWithFileName:fileName] autorelease];
-    
+    TDImageModel *model = [[self initWithFilePath:fileName] autorelease];
     return [model retain];
 }
 

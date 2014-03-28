@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "TDModelObserver.h"
+#import "IDPKit.h"
 #import "TDImageView.h"
 
 @class TDModel;
 
-
-@interface TDTableCell : UITableViewCell <TDModelObserver>
+@interface TDTableCell : UITableViewCell <IDPModelObserver>
 @property (nonatomic, retain)   IBOutlet TDImageView    *imageModel;
 @property (nonatomic, retain)   IBOutlet UILabel        *label;
 

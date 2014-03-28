@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TDViewController">
             <connections>
-                <outlet property="loginView" destination="hPb-Hr-wLi" id="hza-cY-hDa"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -46,13 +45,16 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-H7-P3R">
-                            <rect key="frame" x="150" y="274" width="37" height="37"/>
+                            <rect key="frame" x="142" y="265" width="37" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPb-Hr-wLi" customClass="FBLoginView">
                             <rect key="frame" x="80" y="502" width="160" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="bB6-n4-tpk"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,6 +76,7 @@
                 <outlet property="addButton" destination="XT8-OI-LuX" id="dX1-S1-7EV"/>
                 <outlet property="editButton" destination="xjf-80-9Wc" id="cKU-A7-puZ"/>
                 <outlet property="loadingView" destination="pRM-LQ-dIZ" id="8kE-Yb-5xy"/>
+                <outlet property="loginView" destination="hPb-Hr-wLi" id="QSc-js-S5h"/>
                 <outlet property="table" destination="VA6-2e-jQa" id="a7t-fV-mZV"/>
             </connections>
         </view>

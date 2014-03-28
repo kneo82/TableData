@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "TDObervableModel.h"
+#import "IDPKit.h"
 
 @class TDImageModel;
 @class TDModelImages;
 
-@interface TDModel : TDObervableModel <NSCoding>
+@interface TDModel : IDPModel <NSCoding>
 @property (nonatomic, copy)     NSString        *string;
 @property (nonatomic, retain)   TDImageModel    *modelImage;
 

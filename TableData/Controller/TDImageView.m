@@ -8,10 +8,8 @@
 
 #import "TDImageView.h"
 #import "TDImageModel.h"
-#import "NSBundle+TDExtensions.h"
 
 @interface TDImageView ()
-@property (nonatomic, retain)   TDImageModel *modelImage;
 
 @end
 
@@ -21,31 +19,24 @@
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
+    self.modelImage = nil;
     self.activityIndicator = nil;
     self.imageView = nil;
-    self.modelImage = nil;
     
     [super dealloc];
 }
 
 #pragma mark -
-#pragma mark Accessors
-
-- (NSString *)restorationIdentifier {
-    return NSStringFromClass([self class]);
-}
-
-#pragma mark -
 #pragma mark Public
 
-- (void)setImageFromModel:(TDImageModel *)modelImage {
+- (void)setModelImage:(TDImageModel *)modelImage {
     if (_modelImage != modelImage) {
         [_modelImage removeObserver:self];
         [_modelImage release];
         
         _modelImage = [modelImage retain];
         [_modelImage addObserver:self];
-        
+        [self.activityIndicator startAnimating];
         [_modelImage load];
     }
 }

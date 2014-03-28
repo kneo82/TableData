@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
-
-#import "TDObervableModel.h"
+#import "IDPKit.h"
 
 @class TDModel;
 
-@interface TDModels : TDObervableModel
+@interface TDModels : IDPModel
 @property (nonatomic, readonly) NSArray     *models;
 
 - (void)addModel:(TDModel *)model;
+- (void)addModelsFromArray:(NSArray *)array;
 - (void)removeModel:(TDModel *)model;
 - (void)moveModelFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 

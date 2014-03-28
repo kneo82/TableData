@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TDModelObserver.h"
+#import "IDPKit.h"
 
 @class TDImageModel;
 
-@interface TDImageView : UIView <TDModelObserver>
-@property (nonatomic, retain)  IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, retain)  IBOutlet UIImageView             *imageView;
-
-- (void)setImageFromModel:(TDImageModel *)modelImage;
+@interface TDImageView : UIView <IDPModelObserver>
+@property (nonatomic, retain)   IBOutlet UIActivityIndicatorView    *activityIndicator;
+@property (nonatomic, retain)   IBOutlet UIImageView                *imageView;
+@property (nonatomic, retain)   TDImageModel                        *modelImage;
 
 @end

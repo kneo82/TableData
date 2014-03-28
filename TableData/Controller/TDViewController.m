@@ -13,14 +13,10 @@
 
 #import "TDModels.h"
 #import "TDModel.h"
-
-#import "TDObservableObject.h"
-#import "NSObject+TDExtensions.h"
-#import "UITableView+TDExtensions.h"
+#import "TDContextLoadingFromFacebook.h"
 
 @interface TDViewController ()
-@property (nonatomic, readonly) TDView                  *mainView;
-@property (nonatomic, retain)   IBOutlet FBLoginView    *loginView;
+@property (nonatomic, readonly) TDView  *mainView;
 
 - (void)loadModels;
 
@@ -35,17 +31,15 @@
 
 - (void)dealloc {
     self.models = nil;
-    self.loginView = nil;
+
     [super dealloc];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         self.mainView.loadingView.hidden = NO;
-        FBLoginView *loginView =[[[FBLoginView alloc] init] autorelease];
-        [loginView setDelegate:self];
-        self.loginView = [loginView retain];
     }
     
     return self;
@@ -56,8 +50,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.loginView = nil;
-
+    
+    self.mainView.loginView = nil;
     [self loadModels];
 }
 
@@ -133,7 +127,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TDTableCell *cell = [tableView reusableCellOfClass:[TDTableCell class]];
+    TDTableCell *cell = [tableView dequeueCell:[TDTableCell class]];
     
     TDModel *cellModel = self.models.models[indexPath.row];
 	cell.model = cellModel;
@@ -177,8 +171,13 @@
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     if (!self.models) {
-        self.models = [TDModels object];
+            self.models = [TDModels object];
     }
+    TDContextLoadingFromFacebook *loadFromFacebook = [TDContextLoadingFromFacebook object];
+    loadFromFacebook.models = self.models;
+    [loadFromFacebook addObserver:self];
+    [loadFromFacebook executeOperation];
+    
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {

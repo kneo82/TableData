@@ -10,7 +10,7 @@
 
 #import "TDImageModel.h"
 
-#include "NSObject+TDExtensions.h"
+static TDModelImages *TDSingletoneObject = nil;
 
 @interface TDModelImages ()
 @property (nonatomic, retain) NSMutableDictionary *mutableDictionaryImages;
@@ -22,14 +22,13 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (TDModelImages *)sharedInstance {
-    static TDModelImages *singletoneObject = nil;
++ (TDModelImages *)sharedObject {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        singletoneObject = [[self alloc] init];
+        TDSingletoneObject = [[self alloc] init];
     });
 
-    return  singletoneObject;
+    return  TDSingletoneObject;
 }
 
 #pragma mark -
@@ -75,6 +74,13 @@
     @synchronized(self) {
         return [self.mutableDictionaryImages objectForKey:fileName];
     }
+}
+
+#pragma mark -
+#pragma mark Private
+
++ (id)__sharedObject {
+	return TDSingletoneObject;
 }
 
 @end

@@ -10,9 +10,6 @@
 
 #import "TDModel.h"
 
-#import "NSBundle+TDExtensions.h"
-#import "NSObject+TDExtensions.h"
-
 @implementation TDTableCell
 
 #pragma mark -
@@ -51,7 +48,7 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TDModel *)model {
-    [self.imageModel setImageFromModel:model.modelImage];
+    [self.imageModel setModelImage:model.modelImage];
     self.label.text = model.string;
 }
 

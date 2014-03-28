@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@class TDModels;
-
 @interface TDAppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic, retain)   UIWindow            *window;
 

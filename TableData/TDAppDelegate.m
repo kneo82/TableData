@@ -7,15 +7,11 @@
 //
 
 #import "TDAppDelegate.h"
-
 #import "TDViewController.h"
-
 #import "TDModels.h"
 
-#import "NSObject+TDExtensions.h"
-
 @interface TDAppDelegate ()
-@property (nonatomic, retain)   TDModels            *models;
+@property (nonatomic, retain)   TDModels    *models;
 
 @end
 
@@ -34,10 +30,10 @@
 #pragma mark -
 #pragma mark View Lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+-           (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    
-    [FBProfilePictureView class];
     
     TDModels *models = [TDModels object];
     self.models = models;

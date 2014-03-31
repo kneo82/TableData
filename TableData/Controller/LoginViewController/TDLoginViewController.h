@@ -10,7 +10,10 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "IDPKit.h"
 
+@class TDFriendsViewController;
+
 @interface TDLoginViewController : UIViewController <FBLoginViewDelegate>
+@property (nonatomic, retain)   TDFriendsViewController *friendsViewController;
 
 - (IBAction)onShowFriends:(id)sender;
 

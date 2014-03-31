@@ -12,9 +12,10 @@
 
 @class TDModels;
 
-@interface TDFriendsViewController : UIViewController <UITableViewDataSource,
-                                                IDPModelObserver,
-                                                FBLoginViewDelegate>
+@interface TDFriendsViewController : UIViewController   <UITableViewDataSource,
+                                                        UITableViewDelegate,
+                                                        IDPModelObserver,
+                                                        FBLoginViewDelegate>
 @property (nonatomic, retain) TDModels *models;
 
 - (IBAction)onEdit:(id)sender;

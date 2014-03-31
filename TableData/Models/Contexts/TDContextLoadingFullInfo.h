@@ -1,0 +1,15 @@
+//
+//  TDTDContextLoadingFullInfo.h
+//  TableData
+//
+//  Created by Vitaliy Voronok on 3/29/14.
+//  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "TDContextLoadingFromFacebook.h"
+
+@interface TDContextLoadingFullInfo : TDContextLoadingFromFacebook
+@property (nonatomic, retain)   TDModel *model;
+
+@end

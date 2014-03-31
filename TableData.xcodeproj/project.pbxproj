@@ -18,6 +18,11 @@
 		552B857418CE47C600D754C3 /* TDImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857318CE47C600D754C3 /* TDImageModel.m */; };
 		552B857A18CE643200D754C3 /* TDModelImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857918CE643200D754C3 /* TDModelImages.m */; };
 		55424DC118CDB7FB009883C9 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 55424DC018CDB7FB009883C9 /* blank.png */; };
+		5553262618E6D1A4008728B4 /* TDFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262418E6D1A4008728B4 /* TDFriendDetailViewController.m */; };
+		5553262718E6D1A4008728B4 /* TDFriendDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5553262518E6D1A4008728B4 /* TDFriendDetailViewController.xib */; };
+		5553262A18E6D1F6008728B4 /* TDFriendDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262918E6D1F6008728B4 /* TDFriendDetailView.m */; };
+		5553263018E7511B008728B4 /* TDContextLoadingUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */; };
+		5553263318E75163008728B4 /* TDContextLoadingFullInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */; };
 		5566E5A418C86248000E4EF0 /* TDFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */; };
 		5571118318E2C3E60065819C /* IDPCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E318E2C3E60065819C /* IDPCoreDataManager.m */; };
 		5571118418E2C3E60065819C /* NSManagedObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E518E2C3E60065819C /* NSManagedObject+IDPExtensions.m */; };
@@ -84,6 +89,7 @@
 		558D9A3D18C713EC006F5CC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 558D9A3B18C713EC006F5CC1 /* InfoPlist.strings */; };
 		558D9A3F18C713EC006F5CC1 /* TableDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A3E18C713EC006F5CC1 /* TableDataTests.m */; };
 		558D9A4B18C71467006F5CC1 /* TDFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558D9A4918C71467006F5CC1 /* TDFriendsViewController.m */; };
+		55B2512818E93FB400553FF7 /* UITableView+TDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B2512718E93FB400553FF7 /* UITableView+TDExtensions.m */; };
 		55B5055D18E55305001C78DA /* Task in Resources */ = {isa = PBXBuildFile; fileRef = 55B5055C18E55305001C78DA /* Task */; };
 		55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5055F18E5535C001C78DA /* TDLoginViewController.m */; };
 		55B5056218E5535C001C78DA /* TDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B5056018E5535C001C78DA /* TDLoginViewController.xib */; };
@@ -120,6 +126,15 @@
 		552B857818CE643200D754C3 /* TDModelImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDModelImages.h; path = TableData/Models/TDModelImages.h; sourceTree = SOURCE_ROOT; };
 		552B857918CE643200D754C3 /* TDModelImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDModelImages.m; path = TableData/Models/TDModelImages.m; sourceTree = SOURCE_ROOT; };
 		55424DC018CDB7FB009883C9 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blank.png; path = Images/blank.png; sourceTree = "<group>"; };
+		5553262318E6D1A4008728B4 /* TDFriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendDetailViewController.h; sourceTree = "<group>"; };
+		5553262418E6D1A4008728B4 /* TDFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendDetailViewController.m; sourceTree = "<group>"; };
+		5553262518E6D1A4008728B4 /* TDFriendDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDFriendDetailViewController.xib; sourceTree = "<group>"; };
+		5553262818E6D1F6008728B4 /* TDFriendDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendDetailView.h; sourceTree = "<group>"; };
+		5553262918E6D1F6008728B4 /* TDFriendDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendDetailView.m; sourceTree = "<group>"; };
+		5553262E18E7511B008728B4 /* TDContextLoadingUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextLoadingUsers.h; sourceTree = "<group>"; };
+		5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextLoadingUsers.m; sourceTree = "<group>"; };
+		5553263118E75163008728B4 /* TDContextLoadingFullInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextLoadingFullInfo.h; sourceTree = "<group>"; };
+		5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextLoadingFullInfo.m; sourceTree = "<group>"; };
 		5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDFriendsViewController.xib; sourceTree = "<group>"; };
 		557110DA18E2C3E60065819C /* IDPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDPKit.h; path = IDAPKit/src/IDPKit.h; sourceTree = SOURCE_ROOT; };
 		557110E118E2C3E60065819C /* IDPActiveRecordKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPActiveRecordKit.h; sourceTree = "<group>"; };
@@ -254,6 +269,8 @@
 		558D9A3E18C713EC006F5CC1 /* TableDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDataTests.m; sourceTree = "<group>"; };
 		558D9A4818C71467006F5CC1 /* TDFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendsViewController.h; sourceTree = "<group>"; };
 		558D9A4918C71467006F5CC1 /* TDFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendsViewController.m; sourceTree = "<group>"; };
+		55B2512618E93FB400553FF7 /* UITableView+TDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TDExtensions.h"; sourceTree = "<group>"; };
+		55B2512718E93FB400553FF7 /* UITableView+TDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TDExtensions.m"; sourceTree = "<group>"; };
 		55B5055C18E55305001C78DA /* Task */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Task; path = TableData/Task; sourceTree = "<group>"; };
 		55B5055E18E5535C001C78DA /* TDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginViewController.h; sourceTree = "<group>"; };
 		55B5055F18E5535C001C78DA /* TDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginViewController.m; sourceTree = "<group>"; };
@@ -296,6 +313,10 @@
 			children = (
 				5505BDD818DAD4E9004AFF23 /* TDContextLoadingFromFacebook.h */,
 				5505BDD918DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m */,
+				5553262E18E7511B008728B4 /* TDContextLoadingUsers.h */,
+				5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */,
+				5553263118E75163008728B4 /* TDContextLoadingFullInfo.h */,
+				5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */,
 			);
 			name = Contexts;
 			path = TableData/Models/Contexts;
@@ -332,12 +353,25 @@
 		55424DC218CDBBE8009883C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5553262218E6D0F0008728B4 /* FriendDetailViewController */,
 				55B5056718E5872B001C78DA /* FriendsViewController */,
 				55B5056318E55378001C78DA /* LoginViewController */,
 			);
 			name = Controller;
 			path = TableData/Controller;
 			sourceTree = SOURCE_ROOT;
+		};
+		5553262218E6D0F0008728B4 /* FriendDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5553262318E6D1A4008728B4 /* TDFriendDetailViewController.h */,
+				5553262418E6D1A4008728B4 /* TDFriendDetailViewController.m */,
+				5553262518E6D1A4008728B4 /* TDFriendDetailViewController.xib */,
+				5553262818E6D1F6008728B4 /* TDFriendDetailView.h */,
+				5553262918E6D1F6008728B4 /* TDFriendDetailView.m */,
+			);
+			path = FriendDetailViewController;
+			sourceTree = "<group>";
 		};
 		557110D418E2C3E60065819C /* IDAPKit */ = {
 			isa = PBXGroup;
@@ -770,6 +804,8 @@
 				5507E6DE18C9A5BE003B84C4 /* Models */,
 				5507E6D718C9A370003B84C4 /* Images */,
 				558D9A2018C713EC006F5CC1 /* Supporting Files */,
+				55B2512618E93FB400553FF7 /* UITableView+TDExtensions.h */,
+				55B2512718E93FB400553FF7 /* UITableView+TDExtensions.m */,
 			);
 			path = TableData;
 			sourceTree = SOURCE_ROOT;
@@ -915,6 +951,7 @@
 				55B5056218E5535C001C78DA /* TDLoginViewController.xib in Resources */,
 				5507E6D618C9A362003B84C4 /* smile@2x.png in Resources */,
 				5566E5A418C86248000E4EF0 /* TDFriendsViewController.xib in Resources */,
+				5553262718E6D1A4008728B4 /* TDFriendDetailViewController.xib in Resources */,
 				55424DC118CDB7FB009883C9 /* blank.png in Resources */,
 				558D9A2C18C713EC006F5CC1 /* Images.xcassets in Resources */,
 				55B5055D18E55305001C78DA /* Task in Resources */,
@@ -952,21 +989,26 @@
 				5571118C18E2C3E60065819C /* NSArray+IDPExtensions.m in Sources */,
 				5571118518E2C3E60065819C /* NSManagedObjectContext+IDPExtensions.m in Sources */,
 				557111B218E2C3E60065819C /* CALayer+RoundedCorners.m in Sources */,
+				55B2512818E93FB400553FF7 /* UITableView+TDExtensions.m in Sources */,
 				557111AB18E2C3E60065819C /* IDPStackArray.m in Sources */,
 				5571119E18E2C3E60065819C /* IDPMutableArray.m in Sources */,
 				5571119A18E2C3E60065819C /* IDPKVOMutableArray.m in Sources */,
 				557111A418E2C3E60065819C /* NSObject+IDPOCExtensions.m in Sources */,
 				55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */,
+				5553262618E6D1A4008728B4 /* TDFriendDetailViewController.m in Sources */,
 				557111AD18E2C3E60065819C /* IDPURLRequest.m in Sources */,
+				5553263018E7511B008728B4 /* TDContextLoadingUsers.m in Sources */,
 				5571118E18E2C3E60065819C /* NSDate+IDPExtensions.m in Sources */,
 				5571118A18E2C3E60065819C /* CGGeometry+IDPExtensions.m in Sources */,
 				5571118618E2C3E60065819C /* NSManagedObjectID+IDPExtensions.m in Sources */,
 				55CB88A318D1A00F00421DDB /* TDImageView.m in Sources */,
 				557111BD18E2C3E60065819C /* UIColor+IDPExtensions.m in Sources */,
 				5571119C18E2C3E60065819C /* IDPModel.m in Sources */,
+				5553263318E75163008728B4 /* TDContextLoadingFullInfo.m in Sources */,
 				5571119618E2C3E60065819C /* IDPBlock.m in Sources */,
 				5571119818E2C3E60065819C /* IDPKeyPathObserver.m in Sources */,
 				5505BDDA18DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m in Sources */,
+				5553262A18E6D1F6008728B4 /* TDFriendDetailView.m in Sources */,
 				557111C418E2C3E60065819C /* UIViewController+IDPExtensions.m in Sources */,
 				552B857418CE47C600D754C3 /* TDImageModel.m in Sources */,
 				557111BC18E2C3E60065819C /* UIAlertView+IDPExtensions.m in Sources */,

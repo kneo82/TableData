@@ -37,6 +37,7 @@
         _modelImage = [modelImage retain];
         [_modelImage addObserver:self];
         [self.activityIndicator startAnimating];
+
         [_modelImage load];
     }
 }

@@ -1,22 +1,20 @@
 //
-//  TDLoginView.m
+//  TDFriendDetailView.m
 //  TableData
 //
-//  Created by Vitaliy Voronok on 3/28/14.
+//  Created by Vitaliy Voronok on 3/29/14.
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDLoginView.h"
+#import "TDFriendDetailView.h"
 
-@implementation TDLoginView
+@implementation TDFriendDetailView
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.loginView = nil;
-    self.pictureView = nil;
-    self.nameLable = nil;
+    self.imageModel = nil;
     
     [super dealloc];
 }

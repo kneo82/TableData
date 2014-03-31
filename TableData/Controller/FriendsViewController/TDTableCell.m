@@ -48,8 +48,8 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TDModel *)model {
-    [self.imageModel setModelImage:model.modelImage];
-    self.label.text = model.string;
+    [self.imageModel setModelImage:model.modelPreviewImage];
+    self.label.text = model.fullName;
 }
 
 #pragma mark -

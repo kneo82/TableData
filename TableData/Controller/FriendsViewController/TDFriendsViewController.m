@@ -9,14 +9,19 @@
 #import "TDFriendsViewController.h"
 
 #import "TDFriendsView.h"
+#import "TDFriendDetailViewController.h"
 #import "TDTableCell.h"
 
 #import "TDModels.h"
 #import "TDModel.h"
-#import "TDContextLoadingFromFacebook.h"
+#import "TDContextLoadingUsers.h"
+#import "UITableView+TDExtensions.h"
+
+static NSString *const kFriendsViewTitle = @"Friends";
 
 @interface TDFriendsViewController ()
-@property (nonatomic, readonly) TDFriendsView  *mainView;
+@property (nonatomic, readonly) TDFriendsView           *mainView;
+@property (nonatomic, retain)   TDContextLoadingUsers   *loadFromFacebook;
 
 - (void)loadModels;
 
@@ -31,7 +36,7 @@
 
 - (void)dealloc {
     self.models = nil;
-
+    self.loadFromFacebook = nil;
     [super dealloc];
 }
 
@@ -39,6 +44,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.title = kFriendsViewTitle;
         self.mainView.loadingView.hidden = NO;
     }
     
@@ -55,6 +61,8 @@
     if (!self.models) {
         self.models = [TDModels object];
     }
+
+    [self loadModels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,10 +89,6 @@
 
         _models = [models retain];
         [_models addObserver:self];
-        
-        if (_models) {
-            [self loadModels];
-        }
     }
 }
 
@@ -114,7 +118,8 @@
 #pragma mark Private
 
 - (void)loadModels {
-    TDContextLoadingFromFacebook *loadFromFacebook = [TDContextLoadingFromFacebook object];
+    self.loadFromFacebook = [TDContextLoadingUsers object];
+    TDContextLoadingUsers *loadFromFacebook = self.loadFromFacebook;
     loadFromFacebook.models = self.models;
     [loadFromFacebook addObserver:self];
     [loadFromFacebook executeOperation];
@@ -160,6 +165,20 @@
 }
 
 #pragma mark -
+#pragma mark UITableViewDataSource
+
+- (void)                        tableView:(UITableView *)tableView
+ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    TDFriendDetailViewController *object;
+    object = [[TDFriendDetailViewController newViewControllerWithDefaultNib] autorelease];
+    TDModel *model = self.models.models[indexPath.row];
+    object.title = model.fullName;
+    object.model = model;
+    [self.navigationController pushViewController:object animated:YES]; 
+}
+
+#pragma mark -
 #pragma mark TDTaskCompletion
 
 - (void)modelDidLoad:(id)object {
@@ -167,28 +186,9 @@
     
     view.loadingView.hidden = YES;
     [view.table reloadData];
-}
-
-#pragma mark -
-#pragma mark FBLoginViewDelegate
-
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-//    if (!self.models) {
-//            self.models = [TDModels object];
-//    }
-//    TDContextLoadingFromFacebook *loadFromFacebook = [TDContextLoadingFromFacebook object];
-//    loadFromFacebook.models = self.models;
-//    [loadFromFacebook addObserver:self];
-//    [loadFromFacebook executeOperation];
-//    
-}
-
-
-
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-//    self.models = nil;
-//    [self.mainView.table reloadData];
-//    self.mainView.loadingView.hidden = NO;
+    
+    [self.loadFromFacebook removeObserver:self];
+    self.loadFromFacebook = nil;
 }
 
 @end

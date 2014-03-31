@@ -8,6 +8,9 @@
 
 #import "TDFriendsView.h"
 
+static NSString *const kTDButtonDoneKey = @"Done";
+static NSString *const kTDButtonEditKey = @"Edit";
+
 @implementation TDFriendsView
 
 #pragma mark -
@@ -35,7 +38,7 @@
 #pragma mark Private
 
 - (void)setTableViewEditing:(BOOL)editing {
-    self.editButton.title = editing ? @"Done" : @"Edit";
+    self.editButton.title = editing ? kTDButtonDoneKey : kTDButtonEditKey;
     [self.table setEditing:editing animated:YES];
 }
 

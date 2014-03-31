@@ -13,8 +13,16 @@
 @class TDModelImages;
 
 @interface TDModel : IDPModel <NSCoding>
-@property (nonatomic, copy)     NSString        *string;
-@property (nonatomic, retain)   TDImageModel    *modelImage;
+@property (nonatomic, copy)     NSString        *fullName;
+@property (nonatomic, copy)     NSString        *facebookUserID;
+@property (nonatomic, retain)   TDImageModel    *modelPreviewImage;
 
+@property (nonatomic, retain)   TDImageModel    *modelFullImage;
+@property (nonatomic, copy)     NSString        *city;
+@property (nonatomic, copy)     NSString        *country;
+@property (nonatomic, copy)     NSString        *birthday;
+@property (nonatomic, copy)     NSString        *gender;
+
+@property (nonatomic, assign)   BOOL            fullDataModelLoaded;
 
 @end

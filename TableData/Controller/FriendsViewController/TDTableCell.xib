@@ -6,15 +6,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell opaque="NO" contentMode="scaleToFill" restorationIdentifier="TDTableCell" selectionStyle="default" indentationWidth="10" id="Iwq-zq-7L2" customClass="TDTableCell">
+        <tableViewCell opaque="NO" contentMode="scaleToFill" restorationIdentifier="TDTableCell" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" id="Iwq-zq-7L2" customClass="TDTableCell">
             <rect key="frame" x="0.0" y="0.0" width="322" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="Iwq-zq-7L2" id="8I0-To-B7i">
-                <rect key="frame" x="0.0" y="0.0" width="322" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="255" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="textLabl" text="" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O69-Nq-emo">
-                        <rect key="frame" x="71" y="0.0" width="231" height="43"/>
+                        <rect key="frame" x="71" y="0.0" width="164" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <accessibility key="accessibilityConfiguration">
                             <bool key="isElement" value="NO"/>

@@ -10,6 +10,11 @@
 #import "TDFriendsViewController.h"
 #import "TDLoginView.h"
 
+static NSString *const kLoginViewTitle = @"Login";
+static NSString *const kTDBasicInfoPermissions = @"basic_info";
+static NSString *const kTDFriendsBirthdayPermissions = @"friends_birthday";
+static NSString *const kTDFriendsHometownPermissions = @"friends_hometown";
+
 @interface TDLoginViewController ()
 @property (nonatomic, readonly) TDLoginView  *loginView;
 
@@ -22,9 +27,17 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+    self.friendsViewController = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.title = kLoginViewTitle;
+        self.friendsViewController = [[TDFriendsViewController newViewControllerWithDefaultNib] autorelease];
     }
     return self;
 }
@@ -44,15 +57,26 @@
 #pragma mark Interface Handling
 
 - (void)onShowFriends:(id)sender {
-    TDFriendsViewController *object = [[TDFriendsViewController newViewControllerWithDefaultNib] autorelease];
-    [self.navigationController pushViewController:object animated:YES];
+    [self.navigationController pushViewController:self.friendsViewController animated:YES];
 }
 
 #pragma mark -
 #pragma mark FBLoginViewDelegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        NSArray *requestPermissions = @[kTDBasicInfoPermissions,
+                                        kTDFriendsBirthdayPermissions,
+                                        kTDFriendsHometownPermissions];
+        
+        [FBSession openActiveSessionWithReadPermissions:requestPermissions
+                                           allowLoginUI:NO
+                                      completionHandler:^(FBSession *session,
+                                                          FBSessionState state,
+                                                          NSError *error)
+         {
+         }];
+    }
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {

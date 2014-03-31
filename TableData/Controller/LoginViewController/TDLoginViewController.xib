@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TDLoginViewController">
@@ -10,12 +10,12 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1" userLabel="View" customClass="TDLoginView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+        <view clipsSubviews="YES" contentMode="scaleAspectFit" id="1" userLabel="View" customClass="TDLoginView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFV-9E-TuC" userLabel="LoginView" customClass="FBLoginView">
-                    <rect key="frame" x="53" y="384" width="215" height="55"/>
+                    <rect key="frame" x="53" y="313" width="215" height="45"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.30409401790000001" green="0.40771182760000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="0.30409401790000001" green="0.40771182760000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-e5-EtK">
-                    <rect key="frame" x="53" y="447" width="215" height="45"/>
+                    <rect key="frame" x="53" y="377" width="215" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.23137256503105164" green="0.3490196168422699" blue="0.59607845544815063" alpha="1" colorSpace="deviceRGB"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,8 +50,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <accessibility key="accessibilityConfiguration" label="Logins">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="buttonFriends" destination="tNZ-e5-EtK" id="W72-AQ-O3r"/>
                 <outlet property="loginView" destination="TFV-9E-TuC" id="Vcd-jB-elz"/>

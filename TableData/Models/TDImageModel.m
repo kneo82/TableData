@@ -9,7 +9,8 @@
 #import "TDImageModel.h"
 #import "TDModelImages.h"
 
-static NSString *const defaultFileName = @"smile.png";
+static NSString *const defaultImage = @"smile.png";
+static NSString *const kTDImageFileNameKey = @"imageFileName";
 
 @interface TDImageModel ()
 @property (nonatomic, retain)   UIImage         *image;
@@ -52,7 +53,7 @@ static NSString *const defaultFileName = @"smile.png";
 }
 
 - (id)init {
-    return [self initWithFilePath:defaultFileName];
+    return [self initWithFilePath:defaultImage];
 }
 
 #pragma mark -
@@ -82,18 +83,19 @@ static NSString *const defaultFileName = @"smile.png";
         
         UIImage *image = nil;
         NSString *imageFilePath = self.imageFilePath;
+        NSURL *url = [NSURL URLWithString:self.imageFilePath];
+        NSString *path = [self pathForFileName:[url lastPathComponent]];
         
-        if (imageFilePath == nil || 0 == [imageFilePath compare:@"smile.png"]) {
+        if (imageFilePath == nil || 0 == [imageFilePath compare:defaultImage]) {
             image = [UIImage imageNamed:imageFilePath];
         } else {
-            NSURL *url = [NSURL URLWithString:self.imageFilePath];
-            NSData *dataImage = [NSData dataWithContentsOfURL:url];
-            NSString *path = [self pathForFileName:[url lastPathComponent]];
-            if (dataImage) {
-                image = [UIImage imageWithData:dataImage];
-                [dataImage writeToFile:path atomically:YES];
-            } else {
-                image = [UIImage imageWithContentsOfFile:path];
+            image = [UIImage imageWithContentsOfFile:path];
+            if (!image) {
+                NSData *dataImage = [NSData dataWithContentsOfURL:url];
+                if (dataImage) {
+                    image = [UIImage imageWithData:dataImage];
+                    [dataImage writeToFile:path atomically:YES];
+                }
             }
         }
         
@@ -124,13 +126,13 @@ static NSString *const defaultFileName = @"smile.png";
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    NSString *fileName = [aDecoder decodeObjectForKey:@"imageFileName"];
+    NSString *fileName = [aDecoder decodeObjectForKey:kTDImageFileNameKey];
     TDImageModel *model = [[self initWithFilePath:fileName] autorelease];
     return [model retain];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.imageFilePath forKey:@"imageFileName"];
+    [aCoder encodeObject:self.imageFilePath forKey:kTDImageFileNameKey];
 }
 
 @end

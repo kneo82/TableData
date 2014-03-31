@@ -37,8 +37,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    TDLoginViewController *loginController = [[TDLoginViewController newViewControllerWithDefaultNib] autorelease];
-    UIViewController *controller = [[[UINavigationController alloc] initWithRootViewController:loginController] autorelease];
+    self.models = [TDModels object];
+    
+    TDLoginViewController *loginController;
+    loginController = [[TDLoginViewController newViewControllerWithDefaultNib] autorelease];
+    loginController.friendsViewController.models = self.models;
+    
+    UIViewController *controller;
+    controller = [[[UINavigationController alloc] initWithRootViewController:loginController]
+                  autorelease];
     
     self.window.rootViewController = controller;
     

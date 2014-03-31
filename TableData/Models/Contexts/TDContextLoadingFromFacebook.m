@@ -11,37 +11,24 @@
 #import "TDModel.h"
 #import "TDImageModel.h"
 
-static NSString *const query =
-@"SELECT uid, name, pic_square FROM user WHERE uid IN "
-@"(SELECT uid2 FROM friend WHERE uid1 = me())";
-
 static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
 
 static NSString *const kTDDataKey = @"data";
-static NSString *const kTDNameKey = @"name";
-static NSString *const kTDPreviewImageKey = @"pic_square";
 
 @interface TDContextLoadingFromFacebook ()
 @property (nonatomic, readonly) NSString    *path;
+@property (nonatomic, retain)	FBRequestConnection	*requestConnection;
 
 - (void)requestToFacebook;
 - (TDModel *)parseItemResultRequest:(id)item;
 - (NSArray *)parseResultRequest:(FBGraphObject *)result;
+- (NSArray *)loadFromDisk;
 
 @end
 
 @implementation TDContextLoadingFromFacebook
 
 @dynamic path;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    self.models = nil;
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Accessors
@@ -58,6 +45,23 @@ static NSString *const kTDPreviewImageKey = @"pic_square";
 
 - (void)executeOperation {
     [self load];
+}
+
+- (TDModel *)parseItemResultRequest:(id)item {
+    return nil;
+}
+
+- (void)finishExecutingOperation:(NSArray *)array {
+    [self finishLoading];
+}
+
+- (void)prepareExecutingOperation {
+    [self requestToFacebook];
+}
+
+- (void)cancel {
+    [self.requestConnection cancel];
+    [self finishLoading];
 }
 
 #pragma mark -
@@ -77,38 +81,30 @@ static NSString *const kTDPreviewImageKey = @"pic_square";
     return array;
 }
 
-- (TDModel *)parseItemResultRequest:(id)item {
-    NSString *name =[item objectForKey:kTDNameKey];
-    NSString *imageFilePath = [item objectForKey:kTDPreviewImageKey];
-
-    TDImageModel *imageModel = [[[TDImageModel alloc] initWithFilePath:imageFilePath] autorelease];
-    TDModel *model = [TDModel object];
-    model.string = name;
-    model.modelImage = imageModel;
-    
-    return model;
+- (NSArray *)loadFromDisk {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
 }
 
 - (void)requestToFacebook {
-    NSDictionary *queryParam = @{ @"q": query };
+    self.requestConnection = [FBRequestConnection object];
+    __block id weakSelf = self;
+    FBRequestHandler handler = ^(FBRequestConnection *connection, id result, NSError *error) {
+        NSArray *modelsArray = nil;
+        if (!error) {
+            modelsArray = [weakSelf parseResultRequest:result];
+        } else {
+            modelsArray = [weakSelf loadFromDisk];
+        }
+        [weakSelf finishExecutingOperation:modelsArray];
+    };
+    
+    FBRequestConnection *requestConnection = self.requestConnection;
+    FBRequest *request = [FBRequest requestForGraphPath:@"/fql"];
+    NSDictionary *queryParam = @{ @"q": self.query };
+    [request.parameters addEntriesFromDictionary:queryParam];
+    [requestConnection addRequest:request completionHandler:handler];
     dispatch_async(dispatch_get_main_queue(), ^{
-        void (^block) (FBRequestConnection *, id, NSError *);
-        block = ^(FBRequestConnection *connection, id result, NSError *error) {
-            NSArray *modelsArray = nil;
-            if (!error) {
-                modelsArray = [self parseResultRequest:result];
-            } else {
-                modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.path];
-            }
-            [self.models addModelsFromArray:modelsArray];
-            [self finishLoading];
-            [self removeObserver:self.models];
-        };
-        
-        [FBRequestConnection startWithGraphPath:@"/fql"
-                                     parameters:queryParam
-                                     HTTPMethod:@"GET"
-                              completionHandler:block];
+         [requestConnection start];
     });
 }
 
@@ -116,11 +112,13 @@ static NSString *const kTDPreviewImageKey = @"pic_square";
     if (![super load]) {
         return NO;
     }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-       [self requestToFacebook];
-    });
-    return YES;
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            sleep(2);
+       [self prepareExecutingOperation];
+    });
+    
+    return YES;
 }
 
 @end

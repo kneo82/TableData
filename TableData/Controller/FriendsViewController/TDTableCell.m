@@ -8,7 +8,7 @@
 
 #import "TDTableCell.h"
 
-#import "TDModel.h"
+#import "TDUser.h"
 
 @implementation TDTableCell
 
@@ -30,24 +30,26 @@
     return NSStringFromClass([self class]);
 }
 
-- (void)setModel:(TDModel *)model {
-    if (model != _model) {
-        [_model removeObserver:self];
-        [_model release];
-        
-        _model = [model retain];
-        [_model addObserver:self];
-        
+- (void)setModel:(TDUser *)model {
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_model, model);
+    
+//    if (model != _model) {
+//        [_model removeObserver:self];
+//        [_model release];
+//        
+//        _model = [model retain];
+//        [_model addObserver:self];
+//        
         if (_model) {
             [_model load];
         }
-    }
+//    }
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)fillWithModel:(TDModel *)model {
+- (void)fillWithModel:(TDUser *)model {
     [self.imageModel setModelImage:model.modelPreviewImage];
     self.label.text = model.fullName;
 }

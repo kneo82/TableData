@@ -8,12 +8,14 @@
 
 #import "TDAppDelegate.h"
 #import "TDFriendsViewController.h"
-#import "TDModels.h"
+#import "TDUsers.h"
 #import "TDLoginViewController.h"
 #import "IDPKit.h"
 
+#import "UIWindow+TDExtensions.h"
+
 @interface TDAppDelegate ()
-@property (nonatomic, retain)   TDModels    *models;
+@property (nonatomic, retain)   TDUsers    *models;
 
 @end
 
@@ -35,21 +37,23 @@
 -           (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [UIWindow window];
+    UIWindow *window = self.window;
     
-    self.models = [TDModels object];
+    self.models = [TDUsers object];
     
     TDLoginViewController *loginController;
-    loginController = [[TDLoginViewController newViewControllerWithDefaultNib] autorelease];
-    loginController.friendsViewController.models = self.models;
+    loginController = [TDLoginViewController viewControllerWithDefaultNib];
     
-    UIViewController *controller;
-    controller = [[[UINavigationController alloc] initWithRootViewController:loginController]
-                  autorelease];
+    loginController.models = self.models;
     
-    self.window.rootViewController = controller;
+    UINavigationController *controller = nil;
+    controller = [[UINavigationController alloc] initWithRootViewController:loginController];
+    [controller autorelease];
     
-    [self.window makeKeyAndVisible];
+    window.rootViewController = controller;
+    
+    [window makeKeyAndVisible];
     
     return YES;
 }
@@ -59,9 +63,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    
-    return wasHandled;
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

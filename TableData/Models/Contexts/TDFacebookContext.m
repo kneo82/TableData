@@ -6,29 +6,40 @@
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDContextLoadingFromFacebook.h"
-#import "TDModels.h"
-#import "TDModel.h"
+#import "TDFacebookContext.h"
+#import "TDUsers.h"
+#import "TDUser.h"
 #import "TDImageModel.h"
 
-static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
+#import "IDPPropertyMacros.h"
+
+static NSString *const kTDStorageFileName   = @"TDStorageFileName1.plist";
 
 static NSString *const kTDDataKey = @"data";
 
-@interface TDContextLoadingFromFacebook ()
+@interface TDFacebookContext ()
 @property (nonatomic, readonly) NSString    *path;
 @property (nonatomic, retain)	FBRequestConnection	*requestConnection;
 
 - (void)requestToFacebook;
-- (TDModel *)parseItemResultRequest:(id)item;
 - (NSArray *)parseResultRequest:(FBGraphObject *)result;
 - (NSArray *)loadFromDisk;
 
 @end
 
-@implementation TDContextLoadingFromFacebook
+@implementation TDFacebookContext
 
 @dynamic path;
+
+#pragma mark -
+#pragma mark Initalizations and Deallocations
+
+- (void)dealloc {
+    self.query = nil;
+    self.requestConnection = nil;
+    
+    [super dealloc];
+}
 
 #pragma mark -
 #pragma mark Accessors
@@ -40,6 +51,14 @@ static NSString *const kTDDataKey = @"data";
     return [path stringByAppendingPathComponent:kTDStorageFileName];
 }
 
+- (void)setRequestConnection:(FBRequestConnection *)requestConnection {
+    if (requestConnection != _requestConnection) {
+        [_requestConnection cancel];
+    }
+    
+    IDPNonatomicRetainPropertySynthesize(_requestConnection, requestConnection);
+}
+
 #pragma mark -
 #pragma mark Public
 
@@ -47,7 +66,7 @@ static NSString *const kTDDataKey = @"data";
     [self load];
 }
 
-- (TDModel *)parseItemResultRequest:(id)item {
+- (TDUser *)parseItemResultRequest:(id)item {
     return nil;
 }
 
@@ -59,9 +78,21 @@ static NSString *const kTDDataKey = @"data";
     [self requestToFacebook];
 }
 
+- (BOOL)load {
+    if (![super load]) {
+        return NO;
+    }
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self prepareExecutingOperation];
+    });
+    
+    return YES;
+}
+
 - (void)cancel {
-    [self.requestConnection cancel];
-    [self finishLoading];
+    [super cancel];
+    self.requestConnection = nil;
 }
 
 #pragma mark -
@@ -72,7 +103,7 @@ static NSString *const kTDDataKey = @"data";
     id data = [result objectForKey:kTDDataKey];
     
     for (id item in data) {
-        TDModel *model = [self parseItemResultRequest:item];
+        TDUser *model = [self parseItemResultRequest:item];
         if (model) {
             [array addObject:model];
         }
@@ -86,7 +117,8 @@ static NSString *const kTDDataKey = @"data";
 }
 
 - (void)requestToFacebook {
-    self.requestConnection = [FBRequestConnection object];
+    FBRequestConnection *requestConnection = [FBRequestConnection object];
+    
     __block id weakSelf = self;
     FBRequestHandler handler = ^(FBRequestConnection *connection, id result, NSError *error) {
         NSArray *modelsArray = nil;
@@ -95,30 +127,20 @@ static NSString *const kTDDataKey = @"data";
         } else {
             modelsArray = [weakSelf loadFromDisk];
         }
+        
         [weakSelf finishExecutingOperation:modelsArray];
     };
     
-    FBRequestConnection *requestConnection = self.requestConnection;
     FBRequest *request = [FBRequest requestForGraphPath:@"/fql"];
     NSDictionary *queryParam = @{ @"q": self.query };
     [request.parameters addEntriesFromDictionary:queryParam];
+    
     [requestConnection addRequest:request completionHandler:handler];
+    
+    self.requestConnection = requestConnection;
     dispatch_async(dispatch_get_main_queue(), ^{
          [requestConnection start];
     });
-}
-
-- (BOOL)load {
-    if (![super load]) {
-        return NO;
-    }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            sleep(2);
-       [self prepareExecutingOperation];
-    });
-    
-    return YES;
 }
 
 @end

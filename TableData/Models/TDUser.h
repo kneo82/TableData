@@ -12,7 +12,7 @@
 @class TDImageModel;
 @class TDModelImages;
 
-@interface TDModel : IDPModel <NSCoding>
+@interface TDUser : IDPModel <NSCoding>
 @property (nonatomic, copy)     NSString        *fullName;
 @property (nonatomic, copy)     NSString        *facebookUserID;
 @property (nonatomic, retain)   TDImageModel    *modelPreviewImage;

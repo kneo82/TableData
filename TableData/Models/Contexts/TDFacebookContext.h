@@ -11,16 +11,16 @@
 
 #import "IDPKit.h"
 
-@class TDModels;
-@class TDModel;
+@class TDUsers;
+@class TDUser;
 
-@interface TDContextLoadingFromFacebook : IDPModel
+@interface TDFacebookContext : IDPModel
 @property (nonatomic, copy) NSString    *query;
 
 - (void)executeOperation;
 - (void)cancel;
 
-- (TDModel *)parseItemResultRequest:(id)item;
+- (TDUser *)parseItemResultRequest:(id)item;
 - (void)finishExecutingOperation:(NSArray *)array;
 - (void)prepareExecutingOperation;
 

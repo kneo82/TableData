@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDModels.h"
-#import "TDModel.h"
+#import "TDUsers.h"
+#import "TDUser.h"
 #import "TDImageModel.h"
-#include "TDContextLoadingFromFacebook.h"
+#include "TDFacebookContext.h"
 
 static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
 
-@interface TDModels ()
+@interface TDUsers ()
 @property (nonatomic, retain, readwrite)    NSMutableArray    *mutableModels;
 @property (nonatomic, readonly)             NSString          *path;
 
 @end
 
-@implementation TDModels
+@implementation TDUsers
 
 @dynamic path;
 @dynamic models;
@@ -61,7 +61,7 @@ static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
 #pragma mark -
 #pragma mark Public
 
-- (void)addModel:(TDModel *)model {
+- (void)addModel:(TDUser *)model {
     @synchronized(self.mutableModels) {
         [self.mutableModels addObject:model];
     }
@@ -73,7 +73,7 @@ static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
     }
 }
 
-- (void)removeModel:(TDModel *)model {
+- (void)removeModel:(TDUser *)model {
     @synchronized(self.mutableModels) {
         [self.mutableModels removeObject:model];
     }
@@ -83,7 +83,7 @@ static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
     @synchronized(self.mutableModels) {
         NSMutableArray *models = self.mutableModels;
         
-        TDModel *model = [[models objectAtIndex:fromIndex] retain];
+        TDUser *model = [[models objectAtIndex:fromIndex] retain];
         [models removeObjectAtIndex:fromIndex];
         [models insertObject:model atIndex:toIndex];
         [model release];

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "IDPKit.h"
 
-@class TDModel;
+@class TDUser;
 
 @interface TDFriendDetailViewController : UIViewController <IDPModelObserver>
-@property (nonatomic, retain)   TDModel *model;
+@property (nonatomic, retain)   TDUser *model;
 
 @end

@@ -30,14 +30,10 @@
 #pragma mark Public
 
 - (void)setModelImage:(TDImageModel *)modelImage {
-    if (_modelImage != modelImage) {
-        [_modelImage removeObserver:self];
-        [_modelImage release];
-        
-        _modelImage = [modelImage retain];
-        [_modelImage addObserver:self];
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_modelImage, modelImage);
+    if (_modelImage) {
         [self.activityIndicator startAnimating];
-
+        
         [_modelImage load];
     }
 }

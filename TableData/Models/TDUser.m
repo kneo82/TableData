@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDModel.h"
+#import "TDUser.h"
 
 #import "TDImageModel.h"
 
@@ -21,7 +21,7 @@ static NSString *const kTDModelFullImageKey = @"modelFullImage";
 static NSString *const kTDFullDataModelLoadedKey = @"fullDataModelLoaded";
 static NSString *const kTDDefaultIDKey = @"me()";
 
-@implementation TDModel
+@implementation TDUser
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -36,8 +36,6 @@ static NSString *const kTDDefaultIDKey = @"me()";
 - (id)init {
     self = [super init];
     if (self) {
-        self.modelPreviewImage = [TDImageModel object];
-        self.modelFullImage = [TDImageModel object];
         self.facebookUserID = kTDDefaultIDKey;
     }
     
@@ -48,28 +46,21 @@ static NSString *const kTDDefaultIDKey = @"me()";
 #pragma mark Accessors
 
 - (void)setModelPreviewImage:(TDImageModel *)modelImage {
-    if (modelImage != _modelPreviewImage) {
-        [_modelPreviewImage removeObserver:self];
-        [_modelPreviewImage release];
-
-        _modelPreviewImage = [modelImage retain];
-        [_modelPreviewImage addObserver:self];
-        if (nil != _modelPreviewImage) {
-            [self finishLoading];
-        }
+    
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_modelPreviewImage, modelImage);
+    
+    if (_modelPreviewImage) {
+        [self finishLoading];
     }
+
 }
 
 - (void)setmodelFullImage:(TDImageModel *)modelImage {
-    if (modelImage != _modelFullImage) {
-        [_modelFullImage removeObserver:self];
-        [_modelFullImage release];
-        
-        _modelFullImage = [modelImage retain];
-        [_modelFullImage addObserver:self];
-        if (nil != _modelFullImage) {
-            [self finishLoading];
-        }
+
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_modelFullImage, modelImage);
+    
+    if (_modelFullImage) {
+        [self finishLoading];
     }
 }
 

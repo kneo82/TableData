@@ -10,14 +10,14 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "IDPKit.h"
 
-@class TDModel;
+@class TDUser;
 
-@interface TDModels : IDPModel
+@interface TDUsers : IDPModel
 @property (nonatomic, readonly) NSArray     *models;
 
-- (void)addModel:(TDModel *)model;
+- (void)addModel:(TDUser *)model;
 - (void)addModelsFromArray:(NSArray *)array;
-- (void)removeModel:(TDModel *)model;
+- (void)removeModel:(TDUser *)model;
 - (void)moveModelFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 
 - (void)save;

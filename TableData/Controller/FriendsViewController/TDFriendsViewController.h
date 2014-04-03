@@ -10,13 +10,13 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "IDPKit.h"
 
-@class TDModels;
+@class TDUsers;
 
 @interface TDFriendsViewController : UIViewController   <UITableViewDataSource,
                                                         UITableViewDelegate,
                                                         IDPModelObserver,
                                                         FBLoginViewDelegate>
-@property (nonatomic, retain) TDModels *models;
+@property (nonatomic, retain) TDUsers *models;
 
 - (IBAction)onEdit:(id)sender;
 - (IBAction)onAdd:(id)sender;

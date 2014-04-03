@@ -10,14 +10,14 @@
 #import "IDPKit.h"
 #import "TDImageView.h"
 
-@class TDModel;
+@class TDUser;
 
 @interface TDTableCell : UITableViewCell <IDPModelObserver>
 @property (nonatomic, retain)   IBOutlet TDImageView    *imageModel;
 @property (nonatomic, retain)   IBOutlet UILabel        *label;
 
-@property (nonatomic, retain)   TDModel     *model;
+@property (nonatomic, retain)   TDUser     *model;
 
-- (void)fillWithModel:(TDModel *)model;
+- (void)fillWithModel:(TDUser *)model;
 
 @end

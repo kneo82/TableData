@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TDImageView;
+@class TDUser;
 
 @interface TDFriendDetailView : UIView
 @property (nonatomic, retain)   IBOutlet TDImageView    *imageModel;
@@ -17,5 +18,7 @@
 @property (nonatomic, retain)   IBOutlet UILabel        *countryLable;
 @property (nonatomic, retain)   IBOutlet UILabel        *birthdayLable;
 @property (nonatomic, retain)   IBOutlet UILabel        *genderLable;
+
+- (void)fillWithModel:(TDUser *)model;
 
 @end

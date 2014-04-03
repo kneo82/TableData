@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		5503968618E3FCD500C739B6 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5503968518E3FCD500C739B6 /* FacebookSDK.framework */; };
-		5505BDDA18DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5505BDD918DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m */; };
+		5505BDDA18DAD4E9004AFF23 /* TDFacebookContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5505BDD918DAD4E9004AFF23 /* TDFacebookContext.m */; };
 		5507E6D018C9A005003B84C4 /* TDTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6CF18C9A005003B84C4 /* TDTableCell.m */; };
 		5507E6D218C9A02B003B84C4 /* TDTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5507E6D118C9A02B003B84C4 /* TDTableCell.xib */; };
 		5507E6D518C9A362003B84C4 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 5507E6D318C9A362003B84C4 /* smile.png */; };
 		5507E6D618C9A362003B84C4 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5507E6D418C9A362003B84C4 /* smile@2x.png */; };
-		5507E6DA18C9A584003B84C4 /* TDModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6D918C9A584003B84C4 /* TDModels.m */; };
-		5507E6DD18C9A5B3003B84C4 /* TDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6DC18C9A5B3003B84C4 /* TDModel.m */; };
+		5507E6DA18C9A584003B84C4 /* TDUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6D918C9A584003B84C4 /* TDUsers.m */; };
+		5507E6DD18C9A5B3003B84C4 /* TDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507E6DC18C9A5B3003B84C4 /* TDUser.m */; };
 		552B857418CE47C600D754C3 /* TDImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857318CE47C600D754C3 /* TDImageModel.m */; };
 		552B857A18CE643200D754C3 /* TDModelImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 552B857918CE643200D754C3 /* TDModelImages.m */; };
 		55424DC118CDB7FB009883C9 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 55424DC018CDB7FB009883C9 /* blank.png */; };
 		5553262618E6D1A4008728B4 /* TDFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262418E6D1A4008728B4 /* TDFriendDetailViewController.m */; };
 		5553262718E6D1A4008728B4 /* TDFriendDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5553262518E6D1A4008728B4 /* TDFriendDetailViewController.xib */; };
 		5553262A18E6D1F6008728B4 /* TDFriendDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262918E6D1F6008728B4 /* TDFriendDetailView.m */; };
-		5553263018E7511B008728B4 /* TDContextLoadingUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */; };
-		5553263318E75163008728B4 /* TDContextLoadingFullInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */; };
+		5553263018E7511B008728B4 /* TDUsersContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553262F18E7511B008728B4 /* TDUsersContext.m */; };
+		5553263318E75163008728B4 /* TDUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5553263218E75163008728B4 /* TDUserContext.m */; };
 		5566E5A418C86248000E4EF0 /* TDFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */; };
 		5571118318E2C3E60065819C /* IDPCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E318E2C3E60065819C /* IDPCoreDataManager.m */; };
 		5571118418E2C3E60065819C /* NSManagedObject+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 557110E518E2C3E60065819C /* NSManagedObject+IDPExtensions.m */; };
@@ -94,6 +94,7 @@
 		55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5055F18E5535C001C78DA /* TDLoginViewController.m */; };
 		55B5056218E5535C001C78DA /* TDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B5056018E5535C001C78DA /* TDLoginViewController.xib */; };
 		55B5056618E559B6001C78DA /* TDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5056518E559B6001C78DA /* TDLoginView.m */; };
+		55C7281218EC07B2001C9B92 /* UIWindow+TDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C7281118EC07B2001C9B92 /* UIWindow+TDExtensions.m */; };
 		55CB88A318D1A00F00421DDB /* TDImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB88A218D1A00F00421DDB /* TDImageView.m */; };
 		55E1B48F18C73A7C00AF1C57 /* TDFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1B48E18C73A7C00AF1C57 /* TDFriendsView.m */; };
 /* End PBXBuildFile section */
@@ -110,17 +111,17 @@
 
 /* Begin PBXFileReference section */
 		5503968518E3FCD500C739B6 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		5505BDD818DAD4E9004AFF23 /* TDContextLoadingFromFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextLoadingFromFacebook.h; sourceTree = "<group>"; };
-		5505BDD918DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextLoadingFromFacebook.m; sourceTree = "<group>"; };
+		5505BDD818DAD4E9004AFF23 /* TDFacebookContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFacebookContext.h; sourceTree = "<group>"; };
+		5505BDD918DAD4E9004AFF23 /* TDFacebookContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFacebookContext.m; sourceTree = "<group>"; };
 		5507E6CE18C9A005003B84C4 /* TDTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTableCell.h; sourceTree = "<group>"; };
 		5507E6CF18C9A005003B84C4 /* TDTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTableCell.m; sourceTree = "<group>"; };
 		5507E6D118C9A02B003B84C4 /* TDTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDTableCell.xib; sourceTree = "<group>"; };
 		5507E6D318C9A362003B84C4 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smile.png; path = Images/smile.png; sourceTree = "<group>"; };
 		5507E6D418C9A362003B84C4 /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "smile@2x.png"; path = "Images/smile@2x.png"; sourceTree = "<group>"; };
-		5507E6D818C9A584003B84C4 /* TDModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDModels.h; path = TableData/Models/TDModels.h; sourceTree = SOURCE_ROOT; };
-		5507E6D918C9A584003B84C4 /* TDModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDModels.m; path = TableData/Models/TDModels.m; sourceTree = SOURCE_ROOT; };
-		5507E6DB18C9A5B3003B84C4 /* TDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDModel.h; path = TableData/Models/TDModel.h; sourceTree = SOURCE_ROOT; };
-		5507E6DC18C9A5B3003B84C4 /* TDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDModel.m; path = TableData/Models/TDModel.m; sourceTree = SOURCE_ROOT; };
+		5507E6D818C9A584003B84C4 /* TDUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDUsers.h; path = TableData/Models/TDUsers.h; sourceTree = SOURCE_ROOT; };
+		5507E6D918C9A584003B84C4 /* TDUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDUsers.m; path = TableData/Models/TDUsers.m; sourceTree = SOURCE_ROOT; };
+		5507E6DB18C9A5B3003B84C4 /* TDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDUser.h; path = TableData/Models/TDUser.h; sourceTree = SOURCE_ROOT; };
+		5507E6DC18C9A5B3003B84C4 /* TDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDUser.m; path = TableData/Models/TDUser.m; sourceTree = SOURCE_ROOT; };
 		552B857218CE47C600D754C3 /* TDImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDImageModel.h; path = TableData/Models/TDImageModel.h; sourceTree = SOURCE_ROOT; };
 		552B857318CE47C600D754C3 /* TDImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDImageModel.m; path = TableData/Models/TDImageModel.m; sourceTree = SOURCE_ROOT; };
 		552B857818CE643200D754C3 /* TDModelImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDModelImages.h; path = TableData/Models/TDModelImages.h; sourceTree = SOURCE_ROOT; };
@@ -131,10 +132,10 @@
 		5553262518E6D1A4008728B4 /* TDFriendDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDFriendDetailViewController.xib; sourceTree = "<group>"; };
 		5553262818E6D1F6008728B4 /* TDFriendDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendDetailView.h; sourceTree = "<group>"; };
 		5553262918E6D1F6008728B4 /* TDFriendDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFriendDetailView.m; sourceTree = "<group>"; };
-		5553262E18E7511B008728B4 /* TDContextLoadingUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextLoadingUsers.h; sourceTree = "<group>"; };
-		5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextLoadingUsers.m; sourceTree = "<group>"; };
-		5553263118E75163008728B4 /* TDContextLoadingFullInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextLoadingFullInfo.h; sourceTree = "<group>"; };
-		5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextLoadingFullInfo.m; sourceTree = "<group>"; };
+		5553262E18E7511B008728B4 /* TDUsersContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUsersContext.h; sourceTree = "<group>"; };
+		5553262F18E7511B008728B4 /* TDUsersContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUsersContext.m; sourceTree = "<group>"; };
+		5553263118E75163008728B4 /* TDUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserContext.h; sourceTree = "<group>"; };
+		5553263218E75163008728B4 /* TDUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserContext.m; sourceTree = "<group>"; };
 		5566E5A318C86248000E4EF0 /* TDFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDFriendsViewController.xib; sourceTree = "<group>"; };
 		557110DA18E2C3E60065819C /* IDPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDPKit.h; path = IDAPKit/src/IDPKit.h; sourceTree = SOURCE_ROOT; };
 		557110E118E2C3E60065819C /* IDPActiveRecordKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPActiveRecordKit.h; sourceTree = "<group>"; };
@@ -258,7 +259,6 @@
 		558D9A2118C713EC006F5CC1 /* TableData-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TableData-Info.plist"; sourceTree = "<group>"; };
 		558D9A2318C713EC006F5CC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		558D9A2518C713EC006F5CC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		558D9A2718C713EC006F5CC1 /* TableData-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableData-Prefix.pch"; sourceTree = "<group>"; };
 		558D9A2818C713EC006F5CC1 /* TDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TDAppDelegate.h; path = TableData/TDAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		558D9A2918C713EC006F5CC1 /* TDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TDAppDelegate.m; path = TableData/TDAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		558D9A2B18C713EC006F5CC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TableData/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -277,6 +277,9 @@
 		55B5056018E5535C001C78DA /* TDLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDLoginViewController.xib; sourceTree = "<group>"; };
 		55B5056418E559B6001C78DA /* TDLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLoginView.h; sourceTree = "<group>"; };
 		55B5056518E559B6001C78DA /* TDLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLoginView.m; sourceTree = "<group>"; };
+		55C7280F18EBD7AF001C9B92 /* TableData-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TableData-Prefix.pch"; sourceTree = "<group>"; };
+		55C7281018EC07B2001C9B92 /* UIWindow+TDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TDExtensions.h"; sourceTree = "<group>"; };
+		55C7281118EC07B2001C9B92 /* UIWindow+TDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TDExtensions.m"; sourceTree = "<group>"; };
 		55CB88A118D1A00F00421DDB /* TDImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageView.h; sourceTree = "<group>"; };
 		55CB88A218D1A00F00421DDB /* TDImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageView.m; sourceTree = "<group>"; };
 		55E1B48D18C73A7C00AF1C57 /* TDFriendsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFriendsView.h; sourceTree = "<group>"; };
@@ -311,12 +314,12 @@
 		5505BDD718DAD484004AFF23 /* Contexts */ = {
 			isa = PBXGroup;
 			children = (
-				5505BDD818DAD4E9004AFF23 /* TDContextLoadingFromFacebook.h */,
-				5505BDD918DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m */,
-				5553262E18E7511B008728B4 /* TDContextLoadingUsers.h */,
-				5553262F18E7511B008728B4 /* TDContextLoadingUsers.m */,
-				5553263118E75163008728B4 /* TDContextLoadingFullInfo.h */,
-				5553263218E75163008728B4 /* TDContextLoadingFullInfo.m */,
+				5505BDD818DAD4E9004AFF23 /* TDFacebookContext.h */,
+				5505BDD918DAD4E9004AFF23 /* TDFacebookContext.m */,
+				5553262E18E7511B008728B4 /* TDUsersContext.h */,
+				5553262F18E7511B008728B4 /* TDUsersContext.m */,
+				5553263118E75163008728B4 /* TDUserContext.h */,
+				5553263218E75163008728B4 /* TDUserContext.m */,
 			);
 			name = Contexts;
 			path = TableData/Models/Contexts;
@@ -337,10 +340,10 @@
 			isa = PBXGroup;
 			children = (
 				5505BDD718DAD484004AFF23 /* Contexts */,
-				5507E6D818C9A584003B84C4 /* TDModels.h */,
-				5507E6D918C9A584003B84C4 /* TDModels.m */,
-				5507E6DB18C9A5B3003B84C4 /* TDModel.h */,
-				5507E6DC18C9A5B3003B84C4 /* TDModel.m */,
+				5507E6D818C9A584003B84C4 /* TDUsers.h */,
+				5507E6D918C9A584003B84C4 /* TDUsers.m */,
+				5507E6DB18C9A5B3003B84C4 /* TDUser.h */,
+				5507E6DC18C9A5B3003B84C4 /* TDUser.m */,
 				552B857218CE47C600D754C3 /* TDImageModel.h */,
 				552B857318CE47C600D754C3 /* TDImageModel.m */,
 				552B857818CE643200D754C3 /* TDModelImages.h */,
@@ -806,6 +809,8 @@
 				558D9A2018C713EC006F5CC1 /* Supporting Files */,
 				55B2512618E93FB400553FF7 /* UITableView+TDExtensions.h */,
 				55B2512718E93FB400553FF7 /* UITableView+TDExtensions.m */,
+				55C7281018EC07B2001C9B92 /* UIWindow+TDExtensions.h */,
+				55C7281118EC07B2001C9B92 /* UIWindow+TDExtensions.m */,
 			);
 			path = TableData;
 			sourceTree = SOURCE_ROOT;
@@ -813,10 +818,10 @@
 		558D9A2018C713EC006F5CC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				55C7280F18EBD7AF001C9B92 /* TableData-Prefix.pch */,
 				558D9A2118C713EC006F5CC1 /* TableData-Info.plist */,
 				558D9A2218C713EC006F5CC1 /* InfoPlist.strings */,
 				558D9A2518C713EC006F5CC1 /* main.m */,
-				558D9A2718C713EC006F5CC1 /* TableData-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			path = TableData;
@@ -973,9 +978,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C7281218EC07B2001C9B92 /* UIWindow+TDExtensions.m in Sources */,
 				5571119F18E2C3E60065819C /* IDPMutableDictionary.m in Sources */,
 				558D9A4B18C71467006F5CC1 /* TDFriendsViewController.m in Sources */,
-				5507E6DD18C9A5B3003B84C4 /* TDModel.m in Sources */,
+				5507E6DD18C9A5B3003B84C4 /* TDUser.m in Sources */,
 				557111C518E2C3E60065819C /* UIViewController+IDPInitialization.m in Sources */,
 				5571119B18E2C3E60065819C /* IDPMachTimer.m in Sources */,
 				558D9A2A18C713EC006F5CC1 /* TDAppDelegate.m in Sources */,
@@ -997,17 +1003,17 @@
 				55B5056118E5535C001C78DA /* TDLoginViewController.m in Sources */,
 				5553262618E6D1A4008728B4 /* TDFriendDetailViewController.m in Sources */,
 				557111AD18E2C3E60065819C /* IDPURLRequest.m in Sources */,
-				5553263018E7511B008728B4 /* TDContextLoadingUsers.m in Sources */,
+				5553263018E7511B008728B4 /* TDUsersContext.m in Sources */,
 				5571118E18E2C3E60065819C /* NSDate+IDPExtensions.m in Sources */,
 				5571118A18E2C3E60065819C /* CGGeometry+IDPExtensions.m in Sources */,
 				5571118618E2C3E60065819C /* NSManagedObjectID+IDPExtensions.m in Sources */,
 				55CB88A318D1A00F00421DDB /* TDImageView.m in Sources */,
 				557111BD18E2C3E60065819C /* UIColor+IDPExtensions.m in Sources */,
 				5571119C18E2C3E60065819C /* IDPModel.m in Sources */,
-				5553263318E75163008728B4 /* TDContextLoadingFullInfo.m in Sources */,
+				5553263318E75163008728B4 /* TDUserContext.m in Sources */,
 				5571119618E2C3E60065819C /* IDPBlock.m in Sources */,
 				5571119818E2C3E60065819C /* IDPKeyPathObserver.m in Sources */,
-				5505BDDA18DAD4E9004AFF23 /* TDContextLoadingFromFacebook.m in Sources */,
+				5505BDDA18DAD4E9004AFF23 /* TDFacebookContext.m in Sources */,
 				5553262A18E6D1F6008728B4 /* TDFriendDetailView.m in Sources */,
 				557111C418E2C3E60065819C /* UIViewController+IDPExtensions.m in Sources */,
 				552B857418CE47C600D754C3 /* TDImageModel.m in Sources */,
@@ -1027,7 +1033,7 @@
 				557111A318E2C3E60065819C /* IDPOCStack.m in Sources */,
 				5571118318E2C3E60065819C /* IDPCoreDataManager.m in Sources */,
 				5571118B18E2C3E60065819C /* IDPMath.m in Sources */,
-				5507E6DA18C9A584003B84C4 /* TDModels.m in Sources */,
+				5507E6DA18C9A584003B84C4 /* TDUsers.m in Sources */,
 				5571118F18E2C3E60065819C /* NSDateComponents+IDPExtinsions.m in Sources */,
 				557111BE18E2C3E60065819C /* UIEvent+IDPExtensions.m in Sources */,
 				557111A118E2C3E60065819C /* IDPOCContext.m in Sources */,

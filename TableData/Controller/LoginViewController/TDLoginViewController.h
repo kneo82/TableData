@@ -11,9 +11,10 @@
 #import "IDPKit.h"
 
 @class TDFriendsViewController;
+@class TDUsers;
 
 @interface TDLoginViewController : UIViewController <FBLoginViewDelegate>
-@property (nonatomic, retain)   TDFriendsViewController *friendsViewController;
+@property (nonatomic, retain) TDUsers *models;
 
 - (IBAction)onShowFriends:(id)sender;
 

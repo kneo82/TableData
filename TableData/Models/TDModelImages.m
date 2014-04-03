@@ -10,7 +10,7 @@
 
 #import "TDImageModel.h"
 
-static TDModelImages *TDSingletoneObject = nil;
+static TDModelImages *__sharedModelImages = nil;
 
 @interface TDModelImages ()
 @property (nonatomic, retain) NSMutableDictionary *mutableDictionaryImages;
@@ -25,16 +25,19 @@ static TDModelImages *TDSingletoneObject = nil;
 + (TDModelImages *)sharedObject {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        TDSingletoneObject = [[self alloc] init];
+        __sharedModelImages = [[self alloc] init];
     });
 
-    return  TDSingletoneObject;
+    return  __sharedModelImages;
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
+    for (TDImageModel *model in self.mutableDictionaryImages) {
+        model.cache = nil;
+    }
     self.mutableDictionaryImages = nil;
     
     [super dealloc];
@@ -55,9 +58,9 @@ static TDModelImages *TDSingletoneObject = nil;
 - (void)addModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
         NSMutableDictionary *mutableDictionaryImages = self.mutableDictionaryImages;
-        NSString *fileName = model.imageFilePath;
-        if (![mutableDictionaryImages objectForKey:fileName]) {
-            [mutableDictionaryImages setObject:model forKey:fileName];
+        NSString *filePath = model.imageFilePath;
+        if (![mutableDictionaryImages objectForKey:filePath]) {
+            [mutableDictionaryImages setObject:model forKey:filePath];
         }
     }
 }
@@ -65,14 +68,15 @@ static TDModelImages *TDSingletoneObject = nil;
 - (void)removeModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
         if (model.imageFilePath) {
+            model.cache = nil;
             [self.mutableDictionaryImages removeObjectForKey:model.imageFilePath];
         }
     }
 }
 
-- (TDImageModel *)takeModelWithFileName:(NSString *)fileName {
+- (TDImageModel *)modelWithFilePath:(NSString *)filePath {
     @synchronized(self) {
-        return [self.mutableDictionaryImages objectForKey:fileName];
+        return [self.mutableDictionaryImages objectForKey:filePath];
     }
 }
 
@@ -80,7 +84,7 @@ static TDModelImages *TDSingletoneObject = nil;
 #pragma mark Private
 
 + (id)__sharedObject {
-	return TDSingletoneObject;
+	return __sharedModelImages;
 }
 
 @end

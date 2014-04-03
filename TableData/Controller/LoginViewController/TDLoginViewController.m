@@ -11,9 +11,6 @@
 #import "TDLoginView.h"
 
 static NSString *const kLoginViewTitle = @"Login";
-static NSString *const kTDBasicInfoPermissions = @"basic_info";
-static NSString *const kTDFriendsBirthdayPermissions = @"friends_birthday";
-static NSString *const kTDFriendsHometownPermissions = @"friends_hometown";
 
 @interface TDLoginViewController ()
 @property (nonatomic, readonly) TDLoginView  *loginView;
@@ -28,7 +25,7 @@ static NSString *const kTDFriendsHometownPermissions = @"friends_hometown";
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.friendsViewController = nil;
+    self.models = nil;
     
     [super dealloc];
 }
@@ -37,60 +34,52 @@ static NSString *const kTDFriendsHometownPermissions = @"friends_hometown";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = kLoginViewTitle;
-        self.friendsViewController = [[TDFriendsViewController newViewControllerWithDefaultNib] autorelease];
     }
+    
     return self;
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-- (TDLoginView *)loginView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TDLoginView class]]) {
-        return (TDLoginView *)self.view;
-    }
-    
-    return nil;
-}
+IDPViewControllerViewOfClassGetterSynthesize(TDLoginView, loginView)
 
 #pragma mark -
 #pragma mark Interface Handling
 
 - (void)onShowFriends:(id)sender {
-    [self.navigationController pushViewController:self.friendsViewController animated:YES];
+    TDFriendsViewController *controller = [TDFriendsViewController defaultNibController];
+    controller.models = self.models;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
+
 
 #pragma mark -
 #pragma mark FBLoginViewDelegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        NSArray *requestPermissions = @[kTDBasicInfoPermissions,
-                                        kTDFriendsBirthdayPermissions,
-                                        kTDFriendsHometownPermissions];
-        
-        [FBSession openActiveSessionWithReadPermissions:requestPermissions
-                                           allowLoginUI:NO
-                                      completionHandler:^(FBSession *session,
-                                                          FBSessionState state,
-                                                          NSError *error)
-         {
-         }];
-    }
+
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    self.loginView.pictureView.profileID = user.id;
-    self.loginView.nameLable.text = user.name;
-    self.loginView.buttonFriends.enabled = YES;
-    self.loginView.buttonFriends.backgroundColor = [UIColor blueColor];
+    TDLoginView *view = self.loginView;
+    UIButton *buttonFriends = view.buttonFriends;
+    
+    view.pictureView.profileID = user.id;
+    view.nameLable.text = user.name;
+    buttonFriends.enabled = YES;
+    buttonFriends.backgroundColor = [UIColor blueColor];
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-    self.loginView.pictureView.profileID = nil;
-    self.loginView.nameLable.text = @"";
-    self.loginView.buttonFriends.enabled = NO;
-    self.loginView.buttonFriends.backgroundColor = [UIColor grayColor];
+    TDLoginView *view = self.loginView;
+    UIButton *buttonFriends = view.buttonFriends;
+    
+    view.pictureView.profileID = nil;
+    view.nameLable.text = @"";
+    buttonFriends.enabled = NO;
+    buttonFriends.backgroundColor = [UIColor grayColor];
 }
 
 @end

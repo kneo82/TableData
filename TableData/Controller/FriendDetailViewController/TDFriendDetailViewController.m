@@ -9,12 +9,12 @@
 #import "TDFriendDetailViewController.h"
 #import "TDFriendDetailView.h"
 #import "TDImageView.h"
-#import "TDModel.h"
-#import "TDContextLoadingFullInfo.h"
+#import "TDUser.h"
+#import "TDUserContext.h"
 
 @interface TDFriendDetailViewController ()
-@property (nonatomic, readonly) TDFriendDetailView          *friendView;
-@property (nonatomic, retain)   TDContextLoadingFullInfo    *loadFullModel;
+@property (nonatomic, readonly) TDFriendDetailView  *friendView;
+@property (nonatomic, retain)   TDUserContext       *loadFullModel;
 
 @end
 
@@ -36,50 +36,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.loadFullModel = [TDContextLoadingFullInfo object];
-    TDContextLoadingFullInfo    *loadFullModel = self.loadFullModel;
+    self.loadFullModel = [TDUserContext object];
+    TDUserContext *loadFullModel = self.loadFullModel;
     loadFullModel.model = self.model;
-    [loadFullModel addObserver:self];
     [loadFullModel executeOperation];
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-- (TDFriendDetailView *)friendView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TDFriendDetailView class]]) {
-        return (TDFriendDetailView *)self.view;
-    }
-    
-    return nil;
-}
+IDPViewControllerViewOfClassGetterSynthesize(TDFriendDetailView, friendView)
 
 #pragma mark -
 #pragma mark Public
 
-- (void)setModel:(TDModel *)model {
-    if (_model != model) {
-        [_model removeObserver:self];
-        [_model release];
-        
-        _model = [model retain];
-        [_model addObserver:self];
-    }
+
+- (void)setModel:(TDUser *)model {
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_model, model);
+    self.title = model.fullName;
+}
+
+- (void)setLoadFullModel:(TDUserContext *)loadFullModel {
+    [loadFullModel cancel];
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_loadFullModel, loadFullModel);
 }
 
 #pragma mark -
 #pragma mark Private
 
 - (void)fillWithModel {
-    TDFriendDetailView *friendView = self.friendView;
-    TDModel *model = self.model;
-    
-    [friendView.imageModel setModelImage:model.modelFullImage];
-    friendView.nameLable.text = model.fullName;
-    friendView.cityLable.text = model.city;
-    friendView.countryLable.text = model.country;
-    friendView.birthdayLable.text = model.birthday;
-    friendView.genderLable.text = model.gender;
+    [self.friendView fillWithModel:self.model];
 }
 
 #pragma mark -
@@ -87,7 +73,10 @@
 
 - (void)modelDidLoad:(id)object {
     [self fillWithModel];
-    [self.loadFullModel removeObserver:self];
+    self.loadFullModel = nil;
+}
+
+- (void)modelDidCancelLoading:(id)theModel {
     self.loadFullModel = nil;
 }
 

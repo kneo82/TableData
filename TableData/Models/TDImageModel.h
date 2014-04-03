@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "IDPKit.h"
 
-@interface TDImageModel : IDPModel <NSCoding>
-@property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, readonly) NSString    *imageFilePath;
+@class TDModelImages;
+
+@interface TDImageModel : IDPModel <NSCoding, IDPModelObserver>
+@property (nonatomic, readonly) UIImage         *image;
+@property (nonatomic, readonly) NSString        *imageFilePath;
+@property (nonatomic, assign)   TDModelImages   *cache;
 
 - (id)initWithFilePath:(NSString *)filePath;
+- (void)cancel;
 
 @end

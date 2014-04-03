@@ -13,9 +13,10 @@ static NSString *const defaultImage = @"smile.png";
 static NSString *const kTDImageFileNameKey = @"imageFileName";
 
 @interface TDImageModel ()
-@property (nonatomic, retain)   UIImage         *image;
-@property (nonatomic, readonly) NSString        *path;
-@property (nonatomic, copy)     NSString        *imageFilePath;
+@property (nonatomic, retain)   UIImage             *image;
+@property (nonatomic, readonly) NSString            *path;
+@property (nonatomic, copy)     NSString            *imageFilePath;
+@property (nonatomic, retain)   IDPURLConnection    *urlConnection;
 
 - (NSString *)pathForFileName:(NSString *)fileName;
 
@@ -30,13 +31,16 @@ static NSString *const kTDImageFileNameKey = @"imageFileName";
 
 - (void)dealloc {
     self.image = nil;
-
+    self.urlConnection = nil;
+    
     [super dealloc];
 }
 
 - (id)initWithFilePath:(NSString *)filePath {
-    TDModelImages *cache = [TDModelImages sharedObject];
-    TDImageModel *model = [cache takeModelWithFileName:filePath];
+    self.cache = [TDModelImages sharedObject];
+    TDModelImages *cache = self.cache;
+    
+    TDImageModel *model = [cache modelWithFilePath:filePath];
     if (model) {
         [self autorelease];
         
@@ -70,8 +74,62 @@ static NSString *const kTDImageFileNameKey = @"imageFileName";
     return [path stringByAppendingPathComponent:fileName];
 }
 
+- (void)setUrlConnection:(IDPURLConnection *)urlConnection {
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_urlConnection, urlConnection);
+}
+
 #pragma mark -
 #pragma mark Public
+
+- (void)cancel {
+    [super cancel];
+    self.urlConnection = nil;
+}
+
+- (void)loadImage {
+    NSURL *url = [NSURL URLWithString:self.imageFilePath];
+    NSString *path = [self pathForFileName:[url lastPathComponent]];
+    
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath: path];
+    if (fileExists) {
+        [self loadFromDisk:path];
+    } else {
+        [self loadFromInternet:url];
+    }
+}
+
+- (void)loadFromDisk:(NSString *)path {
+    UIImage *image = nil;
+    image = [UIImage imageWithContentsOfFile:path];
+    self.image = image;
+    [self finishLoading];
+}
+
+- (void)loadFromInternet:(NSURL *)url {
+    self.urlConnection = [IDPURLConnection connectionToURL:url];
+    IDPURLConnection *urlConnection = self.urlConnection;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [urlConnection load];
+    });
+}
+
+- (void)modelDidLoad:(id)theModel {
+    UIImage *image = nil;
+    NSURL *url = [NSURL URLWithString:self.imageFilePath];
+    NSString *path = [self pathForFileName:[url lastPathComponent]];
+    
+    NSData *dataImage = self.urlConnection.data;
+    
+    if (dataImage) {
+        image = [UIImage imageWithData:dataImage];
+        [dataImage writeToFile:path atomically:YES];
+    }
+    
+    self.urlConnection = nil;
+    self.image = image;
+    [self finishLoading];
+}
 
 - (BOOL)load {
     if(![super load]) {
@@ -79,30 +137,9 @@ static NSString *const kTDImageFileNameKey = @"imageFileName";
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        sleep(arc4random_uniform(3));
-        
-        UIImage *image = nil;
-        NSString *imageFilePath = self.imageFilePath;
-        NSURL *url = [NSURL URLWithString:self.imageFilePath];
-        NSString *path = [self pathForFileName:[url lastPathComponent]];
-        
-        if (imageFilePath == nil || 0 == [imageFilePath compare:defaultImage]) {
-            image = [UIImage imageNamed:imageFilePath];
-        } else {
-            image = [UIImage imageWithContentsOfFile:path];
-            if (!image) {
-                NSData *dataImage = [NSData dataWithContentsOfURL:url];
-                if (dataImage) {
-                    image = [UIImage imageWithData:dataImage];
-                    [dataImage writeToFile:path atomically:YES];
-                }
-            }
-        }
-        
-        self.image = image;
-        
-        [self finishLoading];
+        [self loadImage];
     });
+    
     return YES;
 }
 
@@ -110,8 +147,7 @@ static NSString *const kTDImageFileNameKey = @"imageFileName";
     @synchronized (self) {
         [super release];
         if (1 == [self retainCount]) {
-            TDModelImages *cache = [TDModelImages sharedObject];
-            [cache removeModel:self];
+            [self.cache removeModel:self];
         }
     }
 }
@@ -127,8 +163,8 @@ static NSString *const kTDImageFileNameKey = @"imageFileName";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     NSString *fileName = [aDecoder decodeObjectForKey:kTDImageFileNameKey];
-    TDImageModel *model = [[self initWithFilePath:fileName] autorelease];
-    return [model retain];
+
+    return [self initWithFilePath:fileName];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

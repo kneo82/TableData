@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TDContextLoadingFromFacebook.h"
+#import "TDFacebookContext.h"
 
-@interface TDContextLoadingFullInfo : TDContextLoadingFromFacebook
-@property (nonatomic, retain)   TDModel *model;
+@interface TDUserContext : TDFacebookContext
+@property (nonatomic, retain)   TDUser *model;
 
 @end

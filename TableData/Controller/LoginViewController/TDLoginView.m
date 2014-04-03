@@ -8,6 +8,10 @@
 
 #import "TDLoginView.h"
 
+static NSString *const kTDBasicInfoPermissions = @"basic_info";
+static NSString *const kTDFriendsBirthdayPermissions = @"friends_birthday";
+static NSString *const kTDFriendsHometownPermissions = @"friends_hometown";
+
 @implementation TDLoginView
 
 #pragma mark -
@@ -17,8 +21,17 @@
     self.loginView = nil;
     self.pictureView = nil;
     self.nameLable = nil;
+    self.buttonFriends = nil;
     
     [super dealloc];
+}
+
+
+- (void)awakeFromNib {
+    NSArray *requestPermissions = @[kTDBasicInfoPermissions,
+                                    kTDFriendsBirthdayPermissions,
+                                    kTDFriendsHometownPermissions];
+    self.loginView.readPermissions = requestPermissions;
 }
 
 @end

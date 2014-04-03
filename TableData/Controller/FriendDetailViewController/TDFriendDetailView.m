@@ -7,6 +7,8 @@
 //
 
 #import "TDFriendDetailView.h"
+#import "TDUser.h"
+#import "TDImageView.h"
 
 @implementation TDFriendDetailView
 
@@ -15,8 +17,25 @@
 
 - (void)dealloc {
     self.imageModel = nil;
+    self.nameLable = nil;
+    self.cityLable = nil;
+    self.countryLable = nil;
+    self.birthdayLable = nil;
+    self.genderLable = nil;
     
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)fillWithModel:(TDUser *)model {
+    self.imageModel.modelImage = model.modelFullImage;
+    self.nameLable.text = model.fullName;
+    self.cityLable.text = model.city;
+    self.countryLable.text = model.country;
+    self.birthdayLable.text = model.birthday;
+    self.genderLable.text = model.gender;
 }
 
 @end

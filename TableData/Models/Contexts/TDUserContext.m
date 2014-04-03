@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
-#import "TDContextLoadingFullInfo.h"
-#import "TDModel.h"
+#import "TDUserContext.h"
+#import "TDUser.h"
 #import "TDImageModel.h"
 
 static NSString *const kTDBirthdayKey = @"birthday";
@@ -21,7 +21,7 @@ static NSString *const query =
 @"SELECT birthday, hometown_location.city,"
 @"hometown_location.country, friend_count, pic_big, sex FROM user WHERE uid = ";
 
-@implementation TDContextLoadingFullInfo
+@implementation TDUserContext
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -35,8 +35,8 @@ static NSString *const query =
 #pragma mark -
 #pragma mark Public
 
-- (TDModel *)parseItemResultRequest:(id)item {
-    TDModel *model = self.model;
+- (TDUser *)parseItemResultRequest:(id)item {
+    TDUser *model = self.model;
     
     id data = [item objectForKey:kTDBirthdayKey];
     model.birthday = data == [NSNull null] ? nil : [NSString stringWithFormat:@"%@", data];

@@ -12,16 +12,19 @@
 #import "TDFriendDetailViewController.h"
 #import "TDTableCell.h"
 
-#import "TDModels.h"
-#import "TDModel.h"
-#import "TDContextLoadingUsers.h"
+#import "TDUsers.h"
+#import "TDUser.h"
+#import "TDUsersContext.h"
+
 #import "UITableView+TDExtensions.h"
+
+#import "UIViewController+IDPExtensions.h"
 
 static NSString *const kFriendsViewTitle = @"Friends";
 
 @interface TDFriendsViewController ()
 @property (nonatomic, readonly) TDFriendsView           *mainView;
-@property (nonatomic, retain)   TDContextLoadingUsers   *loadFromFacebook;
+@property (nonatomic, retain)   TDUsersContext   *loadFromFacebook;
 
 - (void)loadModels;
 
@@ -37,6 +40,7 @@ static NSString *const kFriendsViewTitle = @"Friends";
 - (void)dealloc {
     self.models = nil;
     self.loadFromFacebook = nil;
+    
     [super dealloc];
 }
 
@@ -58,11 +62,6 @@ static NSString *const kFriendsViewTitle = @"Friends";
     [super viewDidLoad];
     
     self.mainView.loadingView.hidden = NO;
-    if (!self.models) {
-        self.models = [TDModels object];
-    }
-
-    [self loadModels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,22 +73,16 @@ static NSString *const kFriendsViewTitle = @"Friends";
 #pragma mark -
 #pragma mark Accessors
 
-- (TDFriendsView *)mainView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TDFriendsView class]]) {
-        return (TDFriendsView *)self.view;
-    }
-    
-    return nil;
+IDPViewControllerViewOfClassGetterSynthesize(TDFriendsView, mainView)
+
+- (void)setModels:(TDUsers *)models {
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_models, models);
+    [self loadModels];
 }
 
-- (void)setModels:(TDModels *)models {
-    if (models != _models) {
-        [_models removeObserver:self];
-        [_models release];
-
-        _models = [models retain];
-        [_models addObserver:self];
-    }
+- (void)setLoadFromFacebook:(TDUsersContext *)loadFromFacebook {
+    
+    IDPNonatomicRetainPropertySynthesizeWithObserver(_loadFromFacebook, loadFromFacebook);
 }
 
 #pragma mark -
@@ -101,7 +94,7 @@ static NSString *const kFriendsViewTitle = @"Friends";
 }
 
 - (IBAction)onAdd:(id)sender {
-    [self.models addModel:[TDModel object]];
+    [self.models addModel:[TDUser object]];
     
     UITableView *tableView = self.mainView.table;
 	
@@ -118,10 +111,10 @@ static NSString *const kFriendsViewTitle = @"Friends";
 #pragma mark Private
 
 - (void)loadModels {
-    self.loadFromFacebook = [TDContextLoadingUsers object];
-    TDContextLoadingUsers *loadFromFacebook = self.loadFromFacebook;
+    self.loadFromFacebook = [TDUsersContext object];
+    TDUsersContext *loadFromFacebook = self.loadFromFacebook;
     loadFromFacebook.models = self.models;
-    [loadFromFacebook addObserver:self];
+
     [loadFromFacebook executeOperation];
 }
 
@@ -137,7 +130,7 @@ static NSString *const kFriendsViewTitle = @"Friends";
 {
     TDTableCell *cell = [tableView dequeueCell:[TDTableCell class]];
     
-    TDModel *cellModel = self.models.models[indexPath.row];
+    TDUser *cellModel = self.models.models[indexPath.row];
 	cell.model = cellModel;
 
     return  cell;
@@ -170,10 +163,9 @@ static NSString *const kFriendsViewTitle = @"Friends";
 - (void)                        tableView:(UITableView *)tableView
  accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    TDFriendDetailViewController *object;
-    object = [[TDFriendDetailViewController newViewControllerWithDefaultNib] autorelease];
-    TDModel *model = self.models.models[indexPath.row];
-    object.title = model.fullName;
+    TDFriendDetailViewController *object = [TDFriendDetailViewController defaultNibController];
+    TDUser *model = self.models.models[indexPath.row];
+ 
     object.model = model;
     [self.navigationController pushViewController:object animated:YES]; 
 }
@@ -187,7 +179,10 @@ static NSString *const kFriendsViewTitle = @"Friends";
     view.loadingView.hidden = YES;
     [view.table reloadData];
     
-    [self.loadFromFacebook removeObserver:self];
+    self.loadFromFacebook = nil;
+}
+
+- (void)modelDidCancelLoading:(id)theModel {
     self.loadFromFacebook = nil;
 }
 

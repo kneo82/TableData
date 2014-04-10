@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__49-[TDContextLoadingFromFacebook requestToFacebook]_block_invoke:TDContextLoadingFromFacebook.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TDFriendDetailViewController modelDidLoad:]:TDFriendDetailViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModels save]:TDModels.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TDFriendDetailViewController setModel:]:TDFriendDetailViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModelImages takeModelWithFileName:]:TDModelImages.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDAppDelegate applicationDidEnterBackground:]:TDAppDelegate.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModelImages removeModel:]:TDModelImages.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDImageView modelDidLoad:]:TDImageView.m">
+      </ContextState>
+      <ContextState
+         contextName = "__47-[TDObservableObject notifyObserversWithBlock:]_block_invoke:TDObservableObject.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModelImages takeModelWhisFileName:]:TDModelImages.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDFriendDetailViewController friendView]:TDFriendDetailViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self isViewLoaded]">
+            </PersistentString>
+            <PersistentString
+               value = "[self.view isKindOfClass:[TDFriendDetailView class]]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TDContextLoadingFullInfo init]:TDContextLoadingFullInfo.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDTableCell dealloc]:TDTableCell.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModelImages modelImages]:TDModelImages.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModels load]:TDModels.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TDViewController tableView:cellForRowAtIndexPath:]:TDViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModels addModel:]:TDModels.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDImageModel release]:TDImageModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self retainCount]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModel image]:TDModel.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDObservableObject observers]:TDObservableObject.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDViewController tableView:numberOfRowsInSection:]:TDViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.models.models count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__30-[TDImageModel performLoading]_block_invoke:TDImageModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__50-[TDObservableObject notifyObserversWithSelector:]_block_invoke:TDObservableObject.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[UITableView(TDExtensions) reusableCellOfClass:]:UITableView+TDExtensions.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self dequeueReusableCellWithIdentifier:className]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__67-[TDViewController tableView:commitEditingStyle:forRowAtIndexPath:]_block_invoke:TDViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[NSBundle(TDExtensions) loadClass:owner:options:nibName:]:NSBundle+TDExtensions.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TDModel setModelImage:]:TDModel.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

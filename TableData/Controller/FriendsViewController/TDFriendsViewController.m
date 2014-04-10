@@ -38,6 +38,7 @@ static NSString *const kFriendsViewTitle = @"Friends";
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
+    [_models cleanup];
     self.models = nil;
     self.loadFromFacebook = nil;
     
@@ -76,13 +77,12 @@ static NSString *const kFriendsViewTitle = @"Friends";
 IDPViewControllerViewOfClassGetterSynthesize(TDFriendsView, mainView)
 
 - (void)setModels:(TDUsers *)models {
-    IDPNonatomicRetainPropertySynthesizeWithObserver(_models, models);
-    [self loadModels];
+        IDPNonatomicRetainPropertySynthesizeWithObserver(_models, models);
+        [self loadModels];
 }
 
 - (void)setLoadFromFacebook:(TDUsersContext *)loadFromFacebook {
-    
-    IDPNonatomicRetainPropertySynthesizeWithObserver(_loadFromFacebook, loadFromFacebook);
+    IDPNonatomicRetainPropertySynthesize(_loadFromFacebook, loadFromFacebook);
 }
 
 #pragma mark -
@@ -114,8 +114,10 @@ IDPViewControllerViewOfClassGetterSynthesize(TDFriendsView, mainView)
     self.loadFromFacebook = [TDUsersContext object];
     TDUsersContext *loadFromFacebook = self.loadFromFacebook;
     loadFromFacebook.models = self.models;
-
-    [loadFromFacebook executeOperation];
+    if (loadFromFacebook.models) {
+        [loadFromFacebook executeOperation];
+    }
+    
 }
 
 #pragma mark -

@@ -46,8 +46,7 @@ static NSString *const kTDDefaultIDKey = @"me()";
 #pragma mark Accessors
 
 - (void)setModelPreviewImage:(TDImageModel *)modelImage {
-    
-    IDPNonatomicRetainPropertySynthesizeWithObserver(_modelPreviewImage, modelImage);
+    IDPNonatomicRetainPropertySynthesize(_modelPreviewImage, modelImage);
     
     if (_modelPreviewImage) {
         [self finishLoading];
@@ -57,7 +56,7 @@ static NSString *const kTDDefaultIDKey = @"me()";
 
 - (void)setmodelFullImage:(TDImageModel *)modelImage {
 
-    IDPNonatomicRetainPropertySynthesizeWithObserver(_modelFullImage, modelImage);
+    IDPNonatomicRetainPropertySynthesize(_modelFullImage, modelImage);
     
     if (_modelFullImage) {
         [self finishLoading];
@@ -109,6 +108,17 @@ static NSString *const kTDDefaultIDKey = @"me()";
     [aCoder encodeObject:self.modelFullImage forKey:kTDModelFullImageKey];
     
     [aCoder encodeBool:self.fullDataModelLoaded forKey:kTDFullDataModelLoadedKey];
+}
+
+#pragma mark -
+#pragma mark TDTaskCompletion
+
+- (void)modelDidLoad:(id)object {
+    [self finishLoading];
+}
+
+- (void)modelDidCancelLoading:(id)theModel {
+    [self cancel];
 }
 
 @end

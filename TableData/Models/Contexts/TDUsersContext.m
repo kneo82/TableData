@@ -33,6 +33,16 @@ static NSString *const query =
 #pragma mark -
 #pragma mark Public
 
+- (void)setModels:(TDUsers *)models {
+    if (_models != models) {
+        [self removeObserver:_models];
+        [_models release];
+        
+        _models = [models retain];
+        [self addObserver:_models];
+    }
+}
+
 - (TDUser *)parseItemResultRequest:(id)item {
     NSString *name =[item objectForKey:kTDNameKey];
     NSString *imageFilePath = [item objectForKey:kTDPreviewImageKey];
@@ -45,6 +55,7 @@ static NSString *const query =
     model.facebookUserID = facebookUserID;
     
     return model;
+    
 }
 
 - (void)finishExecutingOperation:(NSArray *)array {

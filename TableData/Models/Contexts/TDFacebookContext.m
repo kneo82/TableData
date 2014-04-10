@@ -20,6 +20,7 @@ static NSString *const kTDDataKey = @"data";
 @interface TDFacebookContext ()
 @property (nonatomic, readonly) NSString    *path;
 @property (nonatomic, retain)	FBRequestConnection	*requestConnection;
+@property (nonatomic, assign)   BOOL                canceled;
 
 - (void)requestToFacebook;
 - (NSArray *)parseResultRequest:(FBGraphObject *)result;
@@ -82,17 +83,17 @@ static NSString *const kTDDataKey = @"data";
     if (![super load]) {
         return NO;
     }
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [self prepareExecutingOperation];
-    });
+//    });
     
     return YES;
 }
 
 - (void)cancel {
-    [super cancel];
+    self.canceled = YES;
     self.requestConnection = nil;
+    [super cancel];
 }
 
 #pragma mark -
@@ -120,16 +121,20 @@ static NSString *const kTDDataKey = @"data";
     FBRequestConnection *requestConnection = [FBRequestConnection object];
     
     __block id weakSelf = self;
+    
     FBRequestHandler handler = ^(FBRequestConnection *connection, id result, NSError *error) {
-        NSArray *modelsArray = nil;
-        if (!error) {
-            modelsArray = [weakSelf parseResultRequest:result];
-        } else {
-            modelsArray = [weakSelf loadFromDisk];
-        }
-        
-        [weakSelf finishExecutingOperation:modelsArray];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSArray *modelsArray = nil;
+            if (!error) {
+                modelsArray = [weakSelf parseResultRequest:result];
+            } else {
+                modelsArray = [weakSelf loadFromDisk];
+            }
+            
+            [weakSelf finishExecutingOperation:modelsArray];
+         });
     };
+                      
     
     FBRequest *request = [FBRequest requestForGraphPath:@"/fql"];
     NSDictionary *queryParam = @{ @"q": self.query };
@@ -138,9 +143,7 @@ static NSString *const kTDDataKey = @"data";
     [requestConnection addRequest:request completionHandler:handler];
     
     self.requestConnection = requestConnection;
-    dispatch_async(dispatch_get_main_queue(), ^{
-         [requestConnection start];
-    });
+    [requestConnection start];
 }
 
 @end

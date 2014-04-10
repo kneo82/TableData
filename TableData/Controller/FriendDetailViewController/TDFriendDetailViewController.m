@@ -57,8 +57,7 @@ IDPViewControllerViewOfClassGetterSynthesize(TDFriendDetailView, friendView)
 }
 
 - (void)setLoadFullModel:(TDUserContext *)loadFullModel {
-    [loadFullModel cancel];
-    IDPNonatomicRetainPropertySynthesizeWithObserver(_loadFullModel, loadFullModel);
+    IDPNonatomicRetainPropertySynthesize(_loadFullModel, loadFullModel);
 }
 
 #pragma mark -

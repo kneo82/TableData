@@ -101,4 +101,21 @@ static NSString *const kTDStorageFileName   = @"TDStorageFileName.plist";
     [super dump];
 }
 
+- (void)cleanup {
+    @synchronized(self.mutableModels) {
+        [self.mutableModels removeAllObjects];
+    }
+}
+
+#pragma mark -
+#pragma mark TDTaskCompletion
+
+- (void)modelDidLoad:(id)object {
+    [self finishLoading];
+}
+
+- (void)modelDidCancelLoading:(id)theModel {
+    [self cancel];
+}
+
 @end

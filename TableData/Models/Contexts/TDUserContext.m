@@ -35,6 +35,16 @@ static NSString *const query =
 #pragma mark -
 #pragma mark Public
 
+- (void)setModel:(TDUser *)model {
+    if (_model != model) {
+        [self removeObserver:_model];
+        [_model release];
+        
+        _model = [model retain];
+        [self addObserver:_model];
+    }
+}
+
 - (TDUser *)parseItemResultRequest:(id)item {
     TDUser *model = self.model;
     

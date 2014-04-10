@@ -67,9 +67,10 @@ static TDModelImages *__sharedModelImages = nil;
 
 - (void)removeModel:(TDImageModel *)model {
     @synchronized(self.mutableDictionaryImages) {
-        if (model.imageFilePath) {
+        NSString *filePath = model.imageFilePath;
+        if (filePath) {
             model.cache = nil;
-            [self.mutableDictionaryImages removeObjectForKey:model.imageFilePath];
+            [self.mutableDictionaryImages removeObjectForKey:filePath];
         }
     }
 }
